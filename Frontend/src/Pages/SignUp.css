@@ -1,0 +1,282 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Allura&display=swap');
+
+:root {
+  --color-bg: #E6F0FF;
+  --color-pink: #FFB6C1;
+  --color-blue: #77AADD;
+  --color-dark: #333;
+    --color-bg: #E6F0FF;
+  --color-btn: #77AADD;
+  --color-accent: #FFB6C1;
+  --color-dark: #333;
+    --color-light-blue: #E6F0FF; /* Warna latar belakang utama */
+    --color-medium-blue: #77AADD; /* Warna tombol */
+    --color-soft-pink: #FFC0CB; /* Warna lingkaran di kiri atas */
+    --color-fuchsia: #FF69B4; /* Warna utama logo 'Skin' */
+    --color-text-brown: #A0522D; /* Warna teks "Uncover..." */
+    --color-footer-blue: #ADD8E6; /* Warna latar belakang footer */
+    --color-light-gray-text: #708090; /* Warna tagline */
+    --color-white: #FFFFFF;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-bg);
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ===== Container ===== */
+.signup-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ===== Header ===== */
+.signup-header {
+  text-align: center;
+  margin-top: 30px;
+  z-index: 2;
+}
+
+.app-title {
+  font-size: 80px;
+  margin-bottom: 0;
+  line-height: 1;
+    font-family: 'Abril Fatface', sans-serif;
+    color: var(--color-soft-pink);
+    text-shadow: 
+        -3px -3px 0 var(--color-fuchsia),  /* Outline putih lebih tebal */
+        3px -3px 0 var(--color-fuchsia),
+        -3px 3px 0 var(--color-fuchsia),
+        3px 3px 0 var(--color-fuchsia),
+        6px 6px 0 var(--color-fuchsia);
+}
+
+.app-subtitle {
+font-size: 24px;
+  font-weight: 400;
+  color: var(--color-light-gray-text);
+  font-family: 'Great Vibes', cursive;
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
+/* ===== Card signup ===== */
+.signup-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(6px);
+  border-radius: 20px;
+  width: 340px;
+  padding: 30px 25px;
+  margin: 0 auto;
+  margin-top: 25px;
+  text-align: center;
+  z-index: 2;
+}
+
+.logo-circle img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.signup-text {
+  color: var(--color-dark);
+  font-weight: 700;
+  font-size: 22px;
+  margin: 10px 0 20px 0;
+}
+
+/* ===== Form ===== */
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.signup-form input {
+  width: 90%;
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 1.5px solid #ccc;
+  font-size: 15px;
+  outline: none;
+  transition: 0.3s;
+}
+
+.signup-form input:focus {
+  border-color: var(--color-blue);
+  background-color: #f9fcff;
+}
+
+.password-field {
+  position: relative;
+}
+
+.eye-icon {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.btn-continue {
+  background-color: var(--color-blue);
+  color: white;
+  border: none;
+  padding: 16px 0;
+  border-radius: 12px; 
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: 12px;
+  transition: 0.3s;
+  font-size: 16px;
+  width: 100%;
+}
+
+.btn-continue:hover {
+  background-color: #5b94c8;
+}
+
+.google-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: white;
+  border: 1.5px solid #ccc;
+  border-radius: 12px;
+  padding: 14px 0;
+  margin-top: 12px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 15px;
+  width: 100%;
+}
+
+.google-btn:hover {
+  border-color: var(--color-blue);
+}
+
+.google-btn img {
+  width: 20px;
+}
+
+.forgot-link {
+  color: var(--color-blue);
+  font-size: 0.85rem;
+  text-decoration: none;
+  margin-top: 5px;
+}
+
+.forgot-link:hover {
+  text-decoration: underline;
+}
+
+.character {
+  position: absolute;
+  top: 50%; /* posisi tengah, bisa kamu ubah */
+  right: 15%; /* geser ke kiri-kanan */
+  transform: translateY(-50%);
+  width: 1000px; /* ubah sesuai besar gambar */
+  opacity: 0.3; 
+}
+
+.chara img {
+  width: 100%;
+  height: auto;
+}
+
+/* ===== Product Icons ===== */
+.skincare {
+  position: absolute;
+  z-index: 1;
+}
+
+.spf {
+  left: 10%;
+  bottom: 20%;
+  width: 80px;
+}
+
+.toner {
+  right: 5%;
+  top: 20%;
+  width: 90px;
+}
+
+.moisturizer {
+  right: 15%;
+  bottom: 10%;
+  width: 70px;
+}
+
+.bubble {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  z-index: 0;
+  animation: float 8s infinite ease-in-out;
+}
+
+.bubble-1 { width: 60px; height: 60px; left: 15%; top: 15%; animation-delay: 0s; }
+.bubble-2 { width: 40px; height: 40px; right: 10%; top: 30%; animation-delay: 1s; }
+.bubble-3 { width: 80px; height: 80px; right: 20%; bottom: 25%; animation-delay: 2s; }
+.bubble-4 { width: 50px; height: 50px; left: 5%; bottom: 15%; animation-delay: 3s; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+
+
+.signup-footer {
+  position: fixed; /* Fixed at the bottom for consistent visibility */
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent background for separation */
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1); /* subtle shadow for depth */
+  display: flex;
+  justify-content: center;
+  gap: 50px; /* Slightly smaller gap for better spacing */
+  padding: 10px 20px; /* Padding for vertical and horizontal spacing */
+  font-size: 14px;
+  color: var(--color-dark);
+  z-index: 1000; /* Make sure footer stays on top */
+  align-items: center;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Reduced spacing between icon and text */
+  color: var(--color-dark);
+  font-weight: 500;
+  cursor: pointer; /* Indicate these are interactive if they link somewhere */
+  transition: color 0.3s ease;
+}
+
+.contact-item:hover {
+  color: var(--color-blue); /* Add hover effect for better UX */
+}
+
+.contact-icon {
+  width: 20px;
+  height: 20px;
+  filter: brightness(0.2); /* Slightly dim the icon color */
+  transition: filter 0.3s ease;
+}
+
+.contact-item:hover .contact-icon {
+  filter: brightness(1); /* Highlight icon on hover */
+}
+
+

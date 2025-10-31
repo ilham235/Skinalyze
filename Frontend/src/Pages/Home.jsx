@@ -28,7 +28,6 @@ function Home() {
           </div>
         </div>
       </nav>
-
       {/* ✅ HERO SECTION */}
       <div className="hero-box">
         <p className="hero-text">
