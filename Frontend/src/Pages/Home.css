@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap');
 :root {
-    --color-light-blue: #E6F0FF; /* Warna latar belakang utama */
-    --color-medium-blue: #77AADD; /* Warna tombol */
-    --color-soft-pink: #FFC0CB; /* Warna lingkaran di kiri atas */
-    --color-fuchsia: #FF69B4; /* Warna utama logo 'Skin' */
-    --color-text-brown: #A0522D; /* Warna teks "Uncover..." */
-    --color-footer-blue: #ADD8E6; /* Warna latar belakang footer */
-    --color-light-gray-text: #708090; /* Warna tagline */
+    --color-light-blue: #E6F0FF;
+    --color-medium-blue: #77AADD;
+    --color-soft-pink: #FFC0CB;
+    --color-fuchsia: #FF69B4;
+    --color-text-brown: #A0522D;
+    --color-footer-blue: #ADD8E6;
+    --color-light-gray-text: #708090;
     --color-white: #FFFFFF;
 }
 
@@ -50,10 +50,9 @@
         3px 3px 0 var(--color-fuchsia),
         6px 6px 0 var(--color-fuchsia); /* Bayangan pink yang solid */
     letter-spacing: 5px;
-    transform: translateX(0px); /* Pertahankan atau sesuaikan jika perlu digeser */
+    transform: translateX(0px); 
     position: relative;
 }
-/* ✅ Hamburger Menu */
 .menu-toggle {
   font-size: 60px;
   cursor: pointer;
@@ -61,7 +60,7 @@
   margin-right: -100px;
   margin-top: 10px;
   margin-left: 70px;
-  color: #ff3bad;
+  color: #ff7fca;
   transition: 0.2s;
 }
 
@@ -123,8 +122,8 @@
   margin-top: 100px;
   background-color: #699eff;
   color: white;
-  padding: 14px 32px;  /* ✅ lebih tinggi & lebar */
-  font-size: 30px;    /* ✅ lebih kelihatan */
+  padding: 14px 32px;
+  font-size: 30px;
   border-radius: 30px;
   border: none;
   cursor: pointer;
@@ -150,4 +149,85 @@
 .analyze-btn:hover {
   background-color: #4b7cdc;
   transform: scale(1.05);
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -730px; 
+  width: 600px !important; 
+  height: 100%;
+  background-color: #dce7ff;
+  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.1);
+  transition: left 0.3s ease;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+.sidebar-logo {
+    font-size: 110px;
+    font-weight: 2000 ;
+    margin-left: 40px;
+    font-family: 'Abril Fatface', sans-serif;
+    color: var(--color-soft-pink);
+    text-shadow: 
+        -3px -3px 0 var(--color-fuchsia),
+        3px -3px 0 var(--color-fuchsia),  
+        -3px 3px 0 var(--color-fuchsia),
+        3px 3px 0 var(--color-fuchsia),
+        6px 6px 0 var(--color-fuchsia)
+}
+
+.sidebar-line {
+  width: 70%;
+  border: 1px solid #ff99cc;
+  margin: 8px 0 30px 0;
+  margin-top: -60px !important;
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  font: size 0px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.sidebar-menu li {
+  font-family: 'Poppins', sans-serif;
+  font-size: 40px;
+  color: #4b7cdc;
+  margin: 50px 0;
+  padding-left: 100px;
+  cursor: pointer;
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.sidebar-menu li:hover {
+  transform: scale(1.1);
+  color: #ff69b4;
+}
+
+.logout-btn {
+  margin-top: auto;
+  margin-bottom: 60px !important;
+  background-color: #77aadd;
+  color: white;
+  font-size: 35px;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 220px;
+  cursor: pointer;
+  transition: 0.2s;
+
+  margin-left: auto;
+  margin-right: auto;
 }

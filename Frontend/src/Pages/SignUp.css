@@ -9,13 +9,13 @@
   --color-btn: #77AADD;
   --color-accent: #FFB6C1;
   --color-dark: #333;
-    --color-light-blue: #E6F0FF; /* Warna latar belakang utama */
-    --color-medium-blue: #77AADD; /* Warna tombol */
-    --color-soft-pink: #FFC0CB; /* Warna lingkaran di kiri atas */
-    --color-fuchsia: #FF69B4; /* Warna utama logo 'Skin' */
-    --color-text-brown: #A0522D; /* Warna teks "Uncover..." */
-    --color-footer-blue: #ADD8E6; /* Warna latar belakang footer */
-    --color-light-gray-text: #708090; /* Warna tagline */
+    --color-light-blue: #E6F0FF;
+    --color-medium-blue: #77AADD;
+    --color-soft-pink: #FFC0CB;
+    --color-fuchsia: #FF69B4;
+    --color-text-brown: #A0522D;
+    --color-footer-blue: #ADD8E6; 
+    --color-light-gray-text: #708090;
     --color-white: #FFFFFF;
 }
 
@@ -26,7 +26,6 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
-/* ===== Container ===== */
 .signup-container {
   position: relative;
   width: 100%;
@@ -34,10 +33,12 @@ body {
   overflow: hidden;
 }
 
-/* ===== Header ===== */
 .signup-header {
   text-align: center;
-  margin-top: 30px;
+  position: absolute; 
+  top: -100px; 
+  width: 100%; 
+  padding-top: 10px;
   z-index: 2;
 }
 
@@ -48,7 +49,7 @@ body {
     font-family: 'Abril Fatface', sans-serif;
     color: var(--color-soft-pink);
     text-shadow: 
-        -3px -3px 0 var(--color-fuchsia),  /* Outline putih lebih tebal */
+        -3px -3px 0 var(--color-fuchsia),
         3px -3px 0 var(--color-fuchsia),
         -3px 3px 0 var(--color-fuchsia),
         3px 3px 0 var(--color-fuchsia),
@@ -64,34 +65,32 @@ font-size: 24px;
   margin-left: 10px;
 }
 
-/* ===== Card signup ===== */
 .signup-card {
-  position: relative;
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(6px);
-  border-radius: 20px;
-  width: 340px;
-  padding: 30px 25px;
-  margin: 0 auto;
-  margin-top: 25px;
-  text-align: center;
-  z-index: 2;
+    position: relative;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(8px);
+    border-radius: 30px;
+    width: 650px; 
+    padding: 50px;  
+    margin: 0 auto;
+    margin-top: 300px;
+    text-align: center;
+    z-index: 2;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
 .logo-circle img {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
 }
 
 .signup-text {
-  color: var(--color-dark);
-  font-weight: 700;
-  font-size: 22px;
-  margin: 10px 0 20px 0;
+    font-size: 28px;
+    margin: 15px 0 25px 0;
+    color: #ADD8E6;
 }
 
-/* ===== Form ===== */
 .signup-form {
   display: flex;
   flex-direction: column;
@@ -99,11 +98,11 @@ font-size: 24px;
 }
 
 .signup-form input {
-  width: 90%;
-  padding: 14px 16px;
-  border-radius: 10px;
+  width: 95%; 
+  padding: 18px 20px; 
+  border-radius: 12px;
   border: 1.5px solid #ccc;
-  font-size: 15px;
+  font-size: 24px;
   outline: none;
   transition: 0.3s;
 }
@@ -137,7 +136,7 @@ font-size: 24px;
   font-weight: 600;
   margin-top: 12px;
   transition: 0.3s;
-  font-size: 16px;
+  font-size: 24px;
   width: 100%;
 }
 
@@ -157,7 +156,7 @@ font-size: 24px;
   margin-top: 12px;
   cursor: pointer;
   transition: 0.3s;
-  font-size: 15px;
+  font-size: 24px;
   width: 100%;
 }
 
@@ -182,10 +181,10 @@ font-size: 24px;
 
 .character {
   position: absolute;
-  top: 50%; /* posisi tengah, bisa kamu ubah */
-  right: 15%; /* geser ke kiri-kanan */
+  top: 50%;
+  right: 15%;
   transform: translateY(-50%);
-  width: 1000px; /* ubah sesuai besar gambar */
+  width: 1000px;
   opacity: 0.3; 
 }
 
@@ -194,7 +193,6 @@ font-size: 24px;
   height: auto;
 }
 
-/* ===== Product Icons ===== */
 .skincare {
   position: absolute;
   z-index: 1;
@@ -238,45 +236,37 @@ font-size: 24px;
 
 
 .signup-footer {
-  position: fixed; /* Fixed at the bottom for consistent visibility */
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent background for separation */
-  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1); /* subtle shadow for depth */
-  display: flex;
-  justify-content: center;
-  gap: 50px; /* Slightly smaller gap for better spacing */
-  padding: 10px 20px; /* Padding for vertical and horizontal spacing */
-  font-size: 14px;
-  color: var(--color-dark);
-  z-index: 1000; /* Make sure footer stays on top */
-  align-items: center;
+  position: absolute;
+     width: 100%;
+    height: 40px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--color-footer-blue);
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 14px;
+    z-index: 10;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .contact-item {
   display: flex;
-  align-items: center;
-  gap: 8px; /* Reduced spacing between icon and text */
-  color: var(--color-dark);
-  font-weight: 500;
-  cursor: pointer; /* Indicate these are interactive if they link somewhere */
-  transition: color 0.3s ease;
+    align-items: center;
+    gap: 12px;
 }
 
 .contact-item:hover {
-  color: var(--color-blue); /* Add hover effect for better UX */
+  color: var(--color-blue); 
 }
 
 .contact-icon {
-  width: 20px;
-  height: 20px;
-  filter: brightness(0.2); /* Slightly dim the icon color */
-  transition: filter 0.3s ease;
+  width: 35px;
+  height: 35px;
 }
 
 .contact-item:hover .contact-icon {
-  filter: brightness(1); /* Highlight icon on hover */
+  filter: brightness(1);
 }
-
-

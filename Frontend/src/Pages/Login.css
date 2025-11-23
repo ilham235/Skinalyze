@@ -29,6 +29,23 @@ body {
   overflow: hidden;
 }
 
+.logo-circle {
+    width: 200px; 
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: var(--color-white);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin: 20px auto 0;
+}
+
+.logo-circle img {
+    width: 200px !important; 
+    height: 200px !important;
+    object-fit: contain;
+}
 /* Lingkaran background kiri atas */
 .circle-top-left {
   position: absolute;
@@ -47,13 +64,14 @@ body {
 }
 
 .app-title {
-  font-size: 180px;
+  /* Diperbesar dari 180px, misalnya menjadi 250px */
+  font-size: 180px !important;
   margin-bottom: 0;
   line-height: 1;
     font-family: 'Abril Fatface', sans-serif;
     color: var(--color-soft-pink);
     text-shadow: 
-        -3px -3px 0 var(--color-fuchsia),  /* Outline putih lebih tebal */
+        -3px -3px 0 var(--color-fuchsia),
         3px -3px 0 var(--color-fuchsia),
         -3px 3px 0 var(--color-fuchsia),
         3px 3px 0 var(--color-fuchsia),
@@ -61,7 +79,8 @@ body {
 }
 
 .app-subtitle {
-  font-size: 50px;
+
+  font-size: 50px !important;
   font-weight: 400;
   color: var(--color-light-gray-text);
   font-family: 'Great Vibes', cursive;
@@ -83,7 +102,12 @@ body {
   height: auto;
 }
 
-
+.login-text {
+    color: var(--color-medium-blue);
+    font-weight: 700;
+    font-size: 25px;
+    margin: 10px 0 20px 0;
+}
 
 .login-box {
   margin: 10px auto;
@@ -150,16 +174,13 @@ body {
   opacity: 1;
 }
 
-
-/* Tombol utama */
-/* Tombol Continue */
 .btn-continue {
   width: 100%;
-  max-width: 600px; /* batas maksimal lebar tombol */
+  max-width: 600px;
   background: var(--color-btn);
   color: white;
   border: none;
-  padding: 12px 25px; /* padding horizontal diperbesar */
+  padding: 12px 25px;
   border-radius: 10px;
   margin-top: 20px;
   cursor: pointer;
@@ -170,7 +191,6 @@ body {
   background: #6699cc;
 }
 
-/* Tombol Google */
 .google-btn {
   width: 100%;
   max-width: 600px;
@@ -188,8 +208,6 @@ body {
 }
 
 
-
-/* Forgot password */
 .forgot-link {
   display: block;
   margin-top: 10px;
@@ -219,5 +237,3 @@ body {
 .bubble-12 { width: 27px; height: 70px; top: 5%; right: 55%; opacity: 0.8; }
 .bubble-13 { width: 86px; height: 30px; bottom: 50%; left: 5%; opacity: 0.5; }
 .bubble-14 { width: 91px; height: 45px; top: 85%; left: 40%; opacity: 0.7; }
-
-

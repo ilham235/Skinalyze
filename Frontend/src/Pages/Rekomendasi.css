@@ -1,0 +1,110 @@
+.rekomendasi-container {
+  background: linear-gradient(to bottom right, #e6f0ff, #e6f0ff);
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+}
+
+.rekomendasi-navbar {
+  display: flex;
+  align-items: center;
+  padding: 15px 40px;
+  background-color: #e6f0ff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  font-family: "Poppins", sans-serif;
+}
+
+.rekomendasi-logo-girl {
+  height: 170px;
+  margin-bottom: auto;
+  margin-top: 80px;
+  margin-right: 30px;
+  margin-left: 200px;
+}
+
+.rekomendasi-brand-name {
+  font-size: 128px;
+    font-weight: 2000 ;
+    font-family: 'Abril Fatface', sans-serif;
+    color: var(--color-soft-pink);
+    text-shadow: 
+        -3px -3px 0 var(--color-fuchsia),
+        3px -3px 0 var(--color-fuchsia),
+        -3px 3px 0 var(--color-fuchsia),
+        3px 3px 0 var(--color-fuchsia),
+        6px 6px 0 var(--color-fuchsia);
+    letter-spacing: 5px;
+    transform: translateX(0px); 
+    position: relative;
+}
+
+.rekomendasi-brand-tagline {
+  font-size: 50px;
+    color: var(--color-light-gray-text);
+
+    font-family: 'Great Vibes', cursive;
+
+    margin-top: 200px;
+    margin-left: -500px;
+}
+
+/* Main */
+.rekomendasi-main {
+  text-align: center;
+  padding: 350px;
+  margin-top: -350px;
+}
+
+.rekomendasi-title {
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.rekomendasi-box {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  background-color: #c7dbff;
+  padding: 50px;
+  width: 2000px;
+  border-radius: 20px;
+}
+
+.rekomendasi-category {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 300px;
+}
+
+.rekomendasi-category img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.rekomendasi-category h3 {
+  color: #4169e1;
+  margin-top: 10px;
+}
+
+.rekomendasi-category p {
+  font-size: 13px;
+  color: #444;
+}
+
+.rekomendasi-footer {
+  margin-top: 20px;
+}
+
+.rekomendasi-more-btn {
+  background-color: #77aadd;
+  color: white;
+  border: none;
+  padding: 20px 50px;
+  border-radius: 10px;
+  font-weight: 900;
+  font-size: 20px;
+  cursor: pointer;
+}

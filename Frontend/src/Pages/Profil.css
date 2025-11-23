@@ -1,102 +1,246 @@
-.profile-container {
-  display: flex;
-  font-family: Poppins, sans-serif;
-  background: #f7f8fc;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap');
+
+/* === CSS RESET & GLOBAL LAYOUT (PENTING!) === */
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh; /* Menggunakan vh untuk memastikan tinggi penuh layar */
+    background-color: var(--color-light-blue); /* Latar belakang halaman */
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
 }
 
+/* Kunci agar padding/border tidak menambah lebar elemen */
+* {
+    box-sizing: border-box; 
+}
+
+/* Variabel Warna Anda */
+:root {
+    --color-light-blue: #E6F0FF;
+    --color-medium-blue: #77AADD;
+    --color-soft-pink: #FFC0CB; /* Merah muda pucat untuk kotak input */
+    --color-fuchsia: #FF69B4; /* Merah muda cerah untuk tombol */
+    --color-text-brown: #A0522D; /* Warna judul/teks utama */
+    --color-footer-blue: #ADD8E6; /* Warna footer/ikon */
+    --color-light-gray-text: #708090; /* Warna teks info */
+    --color-white: #FFFFFF;
+}
+
+/* --- Profile Container: Menengahkan Seluruh Kotak Profil --- */
+.profile-container {
+    max-width: 1400px;
+    width: 90%; /* Responsif di layar kecil */
+    margin: 100px auto; /* Ditengahkan di tengah horizontal */
+    padding: 100px;
+    background-color: var(--color-white);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); 
+}
+
+/* --- Header Section --- */
+.header-section {
+    display: flex;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 30px;
+}
+
+.avatar-placeholder {
+    /* Anggap ini adalah komponen/gambar avatar Anda */
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    /* Gunakan gambar asli Anda di sini. Ini hanya fallback. */
+    background-color: var(--color-soft-pink); 
+    margin-right: 20px;
+}
+
+.avatar-placeholder .avatar-img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.info-header h1 {
+    font-weight: 700;
+    color: var(--color-text-brown);
+    font-size: 50px;
+    margin: 0;
+}
+
+.skin-type {
+    display: inline-block;
+    background-color: var(--color-soft-pink);
+    color: var(--color-text-brown);
+    font-size: 24px;
+    padding: 3px 8px;
+    border-radius: 15px;
+    margin-top: 5px;
+    font-weight: 400;
+}
+
+/* --- Input/Detail Section --- */
+.detail-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.detail-label {
+    width: 200px; 
+    font-weight: 600;
+    color: var(--color-light-gray-text);
+
+    font-size: 24px; /* Nilai default biasanya 14px atau 16px */
+    line-height: 25px;
+}
+
+.detail-value-box {
+    flex-grow: 1;
+    background-color: var(--color-soft-pink);
+    height: 60px; 
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    color: var(--color-light-gray-text);
+    font-weight: 200;
+}
+
+/* --- Edit Button --- */
+.edit-button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 40px;
+}
+
+.edit-button {
+    background-color: var(--color-soft-pink); 
+    color: var(--color-text-brown);
+    border: none;
+    padding: 10px 25px;
+    border-radius: 20px;
+    font-size: 24px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.edit-button:hover {
+    background-color: var(--color-fuchsia); 
+}
+
+.karakter {
+  margin-right: -400px;
+  margin-top: 170px;
+}
+
+.menu-toggle {
+  font-size: 35px;
+  cursor: pointer;
+  padding: 15px;
+  color: #333;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1001;
+}
+
+/* Sidebar */
 .sidebar {
-  width: 260px;
-  background: #dbe6ff;
-  height: 100vh;
-  padding: 30px 20px;
+  position: fixed;
+  top: 0;
+  left: -730px; 
+  width: 600px !important; 
+  height: 100%;
+  background-color: #dce7ff;
+  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.1);
+  transition: left 0.3s ease;
+  z-index: 999;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 
-.logo {
-  color: #e88adf;
-  font-size: 32px;
-  font-weight: 700;
-  margin-bottom: 40px;
+.sidebar.open {
+  left: 0;
 }
 
-.menu li {
+.sidebar-logo {
+    font-size: 110px;
+    font-weight: 2000 ;
+    margin-left: 40px;
+    font-family: 'Abril Fatface', sans-serif;
+    color: var(--color-soft-pink);
+    text-shadow: 
+        -3px -3px 0 var(--color-fuchsia),
+        3px -3px 0 var(--color-fuchsia),  
+        -3px 3px 0 var(--color-fuchsia),
+        3px 3px 0 var(--color-fuchsia),
+        6px 6px 0 var(--color-fuchsia)
+}
+
+.sidebar-line {
+  width: 70%;
+  border: 1px solid #ff99cc;
+  margin: 8px 0 30px 0;
+  margin-top: -60px !important;
+}
+
+.sidebar-menu {
   list-style: none;
-  padding: 12px 10px;
-  font-size: 18px;
-  color: #4b5e82;
-  cursor: pointer;
+  padding: 0;
+  font: size 0px;
+  width: 100%;
+  margin-top: 20px;
 }
 
-.menu li.active {
-  color: #e44aae;
-  font-weight: 600;
+.sidebar-menu li {
+  font-family: 'Poppins', sans-serif;
+  font-size: 40px;
+  color: #4b7cdc;
+  margin: 50px 0;
+  padding-left: 100px;
+  cursor: pointer;
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.sidebar-menu li:hover {
+  transform: scale(1.1);
+  color: #ff69b4;
 }
 
 .logout-btn {
-  width: 100%;
-  padding: 10px;
-  border: none;
-  background: #6e9cd8;
+  margin-top: auto;
+  margin-bottom: 60px !important;
+  background-color: #77aadd;
   color: white;
-  border-radius: 6px;
-  cursor: pointer;
-  margin-bottom: 10px;
-}
-
-.social-footer span {
-  font-size: 12px;
-  display: block;
-  margin-top: 4px;
-}
-
-.profile-content {
-  flex-grow: 1;
-  padding: 40px;
-}
-
-.profile-header {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-.avatar {
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  border: 3px solid #f597c5;
-}
-
-.card {
-  background: #f8b7d0;
-  margin-top: 25px;
-  padding: 12px 15px;
-  border-radius: 6px;
-  display: flex;
-  justify-content: space-between;
-  cursor: pointer;
-  font-weight: 600;
-}
-
-.order-list {
-  margin-top: 10px;
-  background: #f0b1d3;
-  padding: 12px 15px;
-  border-radius: 6px;
-}
-
-.order-list li {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 5px;
-}
-
-.detail-btn {
+  font-size: 35px;
   border: none;
-  background: transparent;
-  font-weight: 600;
+  border-radius: 8px;
+  padding: 10px 220px;
   cursor: pointer;
-  color: #fff;
+  transition: 0.2s;
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.menu-toggle {
+  font-size: 60px;
+  cursor: pointer;
+  user-select: none;
+  margin-right: -100px;
+  margin-top: 10px;
+  margin-left: 70px;
+  color: #ff7fca;
+  transition: 0.2s;
+}
+
+.menu-toggle:hover {
+  transform: scale(1.15);
 }

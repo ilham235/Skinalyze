@@ -1,76 +1,133 @@
-import React, { useState } from 'react';
-import './Profil.css';
+import React, { useState, useRef, useEffect } from 'react';
+import './Profil.css'; 
+import { useNavigate } from 'react-router-dom';
+
+const DetailItem = ({ label, value }) => (
+    <div className="detail-item">
+        <span className="detail-label">{label}</span>
+        <div className="detail-value-box">
+            {value}
+        </div>
+    </div>
+);
 
 const Profil = () => {
-  const [openAnalysis, setOpenAnalysis] = useState(false);
-  const [openOrder, setOpenOrder] = useState(true);
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    const sidebarRef = useRef(null);
+    const navigate = useNavigate();
 
-  return (
-    <div className="profile-container">
-      <aside className="sidebar">
-        <h2 className="logo">Skinalyze</h2>
-        <ul className="menu">
-          <li>🏠 Home</li>
-          <li>👤 Profil</li>
-          <li className="active">📄 Riwayat</li>
-        </ul>
+    const toggleSidebar = () => {
+        setIsSidebarOpen(!isSidebarOpen);
+    };
 
-        <button className="logout-btn">⏻ Log Out</button>
+    // ✅ Tutup sidebar saat klik di luar area
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (
+                sidebarRef.current &&
+                !sidebarRef.current.contains(event.target) &&
+                !event.target.closest(".menu-toggle")
+            ) {
+                setIsSidebarOpen(false);
+            }
+        };
 
-        <div className="social-footer">
-          <span>📩 skinalyze@gmail.com</span>
-          <span>📸 skinalyze_official</span>
-          <span>🎵 skinalyze_official</span>
+        if (isSidebarOpen) {
+            document.addEventListener("mousedown", handleClickOutside);
+        } else {
+            document.removeEventListener("mousedown", handleClickOutside);
+        }
+
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+    }, [isSidebarOpen]);
+
+    return (
+        <div className="profile-container">
+{!isSidebarOpen && (
+  <div className="menu-toggle" onClick={toggleSidebar}>
+    &#9776;
+  </div>
+)} 
+
+            {/* ✅ SIDEBAR */}
+            <div ref={sidebarRef} className={`sidebar ${isSidebarOpen ? "open" : ""}`}>
+                <h2 className="sidebar-logo">Skinalyze</h2>
+                <hr className="sidebar-line" />
+
+                <ul className="sidebar-menu">
+                    <li onClick={() => navigate("/home")}>
+                        <img src="home.png" alt="Home" className="menu-icon" />
+                        <span>Home</span>
+                    </li>
+                    <li onClick={() => navigate("/profil")}>
+                        <img src="profil.png" alt="Profil" className="menu-icon" />
+                        <span>Profil</span>
+                    </li>
+                    <li onClick={() => navigate("/riwayat")}>
+                        <img src="riwayat.png" alt="Riwayat" className="menu-icon" />
+                        <span>Riwayat</span>
+                    </li>
+                </ul>
+
+                <button className="logout-btn" onClick={() => navigate("/")}>
+                    <i className="fa fa-sign-out"></i> Log Out
+                </button>
+            </div>
+
+            {/* ✅ Bagian Profil (punyamu tidak diubah) */}
+            <div className="header-section">
+                <div className="avatar-placeholder">
+                    <img 
+                        src="/orang2.png" 
+                        alt="Avatar Profil" 
+                        className="avatar-img" 
+                    />
+                </div> 
+
+                <div className="karakter">
+                    <img src="/Orang1.png" alt="karakter" />
+                </div>
+
+                <div className="info-header">
+                    <h1>Your Name</h1>
+                    <span className="skin-type">
+                        Skin Type : Combination Skin . Moderate hydration
+                    </span>
+                </div>
+            </div>
+
+                  <footer className="skinanalyze-footer">
+        <div className="contact-item">
+          <img src="/email.png" alt="Email" className="contact-icon" />
+          <span className="contact-link">skinalyze@gmail.com</span>
         </div>
-      </aside>
 
-      <main className="profile-content">
-        <div className="profile-header">
-          <img src="/avatar.png" alt="avatar" className="avatar" />
-          <div>
-            <h3>Your Name</h3>
-            <p>Skin Type : Combination Skin • Moderate hydration</p>
-          </div>
+        <div className="contact-item">
+          <img src="/Instagram.png" alt="Instagram" className="contact-icon" />
+          <span>skinalyze_official</span>
         </div>
 
-        {/* Riwayat Analisis */}
-        <div className="card" onClick={() => setOpenAnalysis(!openAnalysis)}>
-          <span>Riwayat Analisis</span>
-          <span>{openAnalysis ? "⯅" : "⯆"}</span>
+        <div className="contact-item">
+          <img src="/tiktok.png" alt="TikTok" className="contact-icon" />
+          <span>skinalyze_official</span>
         </div>
+      </footer>
 
-        {openAnalysis && (
-          <div className="analysis-detail">
-            <p>- Hasil Analisis 1</p>
-            <p>- Hasil Analisis 2</p>
-          </div>
-        )}
+            <div className="details-section">
+                <DetailItem label="Nama" value=":" />
+                <DetailItem label="E-mail" value=":" />
+                <DetailItem label="Alamat" value=":" />
+                <DetailItem label="Tempat, Tanggal Lahir" value=":" />
+            </div>
 
-        {/* Riwayat Pesanan */}
-        <div className="card" onClick={() => setOpenOrder(!openOrder)}>
-          <span>Riwayat Pesanan</span>
-          <span>{openOrder ? "⯅" : "⯆"}</span>
+            <div className="edit-button-container">
+                <button className="edit-button">
+                    Edit Profile
+                </button>
+            </div>
         </div>
-
-        {openOrder && (
-          <ul className="order-list">
-            <li>
-              <span>• Sun Screen</span>
-              <button className="detail-btn">Detail</button>
-            </li>
-            <li>
-              <span>• Facial Wash</span>
-              <button className="detail-btn">Detail</button>
-            </li>
-            <li>
-              <span>• Serum</span>
-              <button className="detail-btn">Detail</button>
-            </li>
-          </ul>
-        )}
-      </main>
-    </div>
-  );
+    );
 };
+
 
 export default Profil;

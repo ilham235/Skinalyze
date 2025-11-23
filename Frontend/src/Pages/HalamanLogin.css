@@ -157,13 +157,13 @@ body {
 /* Ikon Produk (Ditempatkan secara absolut relatif terhadap .right-section-illustration) */
 .product-icon {
     position: absolute;
-    width: 80px; /* Ukuran default */
+    width: 80px;
     height: auto;
-    z-index: 3; /* Di atas ilustrasi utama */
+    z-index: 3;
 }
 
 .spf60 {
-    width: 180px; /* Lebih besar */
+    width: 180px;
     top: 30%;
     left: 130%;
     transform: rotate(-10deg);
@@ -177,13 +177,13 @@ body {
 }
 
 .moisturizer {
-    width: 180px; /* Lebih besar */
-    bottom: 100%; /* Sesuaikan posisi vertikal */
+    width: 180px;
+    bottom: 100%;
     right: -60%;
     transform: rotate(-5deg);
 }
 
-/* Gelembung Dekoratif */
+
 .bubble {
     position: absolute;
     border-radius: 50%;
