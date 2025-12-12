@@ -80,7 +80,7 @@ function Home() {
 
   <div className="brand-wrapper">
     <h1 className="brand-name">Skinalyze</h1>
-    <span className="brand-tagline">Analyze Your Skin</span>
+    <span className="brand-tagline1">Analyze Your Skin</span>
   </div>
 </div>
 

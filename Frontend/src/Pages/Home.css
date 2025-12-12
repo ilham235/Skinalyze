@@ -67,11 +67,11 @@
 
 
 
-.brand-tagline {
+.brand-tagline1 {
     font-size: 50px;
     color: var(--color-light-gray-text);
     font-family: 'Great Vibes', cursive;
-    margin-left: 150px;
+    margin-left: 100px;
 }
 
 .nav-right {
