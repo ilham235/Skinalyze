@@ -116,11 +116,29 @@ html, body {
     margin-top: 40px;
 }
 
+.simpan-button-container {
+      display: flex;
+    justify-content: flex-end;
+    margin-top: 40px;
+}
+
 .edit-button {
     background-color: var(--color-soft-pink); 
     color: var(--color-text-brown);
     border: none;
     padding: 10px 25px;
+    border-radius: 20px;
+    font-size: 24px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.simpan-button {
+    background-color: var(--color-soft-pink); 
+    color: var(--color-text-brown);
+    border: none;
+    padding: 10px 45px;
     border-radius: 20px;
     font-size: 24px;
     font-weight: 600;
@@ -142,7 +160,7 @@ html, body {
   cursor: pointer;
   padding: 15px;
   color: #333;
-  position: fixed;
+  position: absolute;
   top: 20px;
   left: 20px;
   z-index: 1001;
@@ -243,4 +261,63 @@ html, body {
 
 .menu-toggle:hover {
   transform: scale(1.15);
+}
+
+
+/* ======================================
+   📱 RESPONSIVE HEADER PROFIL (MOBILE)
+   ====================================== */
+@media (max-width: 768px) {
+
+  /* Biar halaman bisa discroll */
+  html, body {
+    overflow-y: auto !important;
+  }
+
+  /* Kotak profil mengecil */
+  .profile-container {
+    width: 95%;
+    padding: 20px;
+    margin: 120px auto;
+  }
+
+  /* Header diubah jadi kolom */
+  .header-section {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+  }
+
+  /* Foto profile */
+  .avatar-placeholder {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+  }
+
+  /* Nama user */
+  .info-header h1 {
+    font-size: 28px;
+    margin-top: 10px;
+  }
+
+  /* Skin type */
+  .skin-type {
+    font-size: 16px;
+    padding: 5px 12px;
+    margin-top: 5px;
+  }
+
+  /* Gambar karakter */
+  .karakter {
+    margin: 0 !important;
+    display: flex;
+    justify-content: center;
+  }
+
+  .karakter img {
+    width: 180px;
+    height: auto;
+  }
 }

@@ -196,3 +196,231 @@
   font-size: 18px;
 }
 
+@media (max-width: 768px) {
+
+
+  /* PAGE ALLOW FULL SCROLL */
+  body,
+  .home-container {
+    overflow-y: auto !important;
+    height: auto !important;
+  }
+
+
+  /* NAVBAR */
+  .navbar {
+    width: 100%;
+    padding: 15px 20px;
+  }
+
+
+  .nav-left {
+    gap: 10px;
+  }
+
+
+  .menu-toggle {
+    font-size: 40px;
+    margin-left: 0;
+    margin-right: 10px;
+  }
+
+
+  .logo-girl {
+    height: 80px;
+    margin: 0;
+  }
+
+
+  .brand-name {
+    font-size: 48px;
+    text-shadow:
+      -2px -2px 0 var(--color-fuchsia),
+      2px -2px 0 var(--color-fuchsia),
+      -2px 2px 0 var(--color-fuchsia),
+      2px 2px 0 var(--color-fuchsia);
+  }
+
+
+  .brand-tagline {
+    margin: 0;
+    font-size: 22px;
+    transform: translateY(-10px);
+    display: flex;
+  align-items: center;
+  padding: 10px 10px;
+  }
+
+
+  .nav-right {
+    display: none;
+  }
+
+
+  /* SIDEBAR */
+  .sidebar {
+    width: 280px !important;
+    left: -300px;
+  }
+
+
+  .sidebar.open {
+    left: 0;
+  }
+
+
+  .sidebar-logo {
+    font-size: 48px;
+  }
+
+
+  .sidebar-menu li {
+    font-size: 22px;
+    padding-left: 25px;
+    margin: 30px 0;
+  }
+
+
+  .logout-btn {
+    padding: 10px 40px;
+    font-size: 20px;
+  }
+
+
+  /* HERO BOX */
+  .hero-box {
+    width: 90%;
+    padding: 25px;
+    font-size: 18px;
+  }
+
+
+  .hero-text {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+
+  .analyze-btn {
+    font-size: 22px;
+    padding: 12px 25px;
+    margin-top: 40px;
+  }
+
+
+  /* EDUCATION BUTTON */
+  .education-btn {
+    font-size: 22px;
+    margin-left: 0;
+    margin-top: 25px;
+  }
+
+
+  /* FOOTER */
+  .skinanalyze-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 40px;
+    padding-bottom: 40px;
+  }
+
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+
+  .contact-icon {
+    width: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+
+  /* Container lebih rapih */
+  .analisis-container {
+    padding-bottom: 50px;
+  }
+
+  /* HEADER */
+  .analisis-header {
+    padding: 12px;
+    flex-direction: row;
+  }
+
+  .back-button {
+    font-size: 22px;
+  }
+
+  .brand-icon {
+    width: 38px;
+    height: 38px;
+    font-size: 30px;
+  }
+
+  /* Brand title diperkecil biar ga keluar layar */
+  .brand-title {
+    font-size: 42px;
+    letter-spacing: 2px;
+    text-shadow:
+      -1px -1px 0 var(--color-fuchsia),
+      1px -1px 0 var(--color-fuchsia),
+      -1px 1px 0 var(--color-fuchsia),
+      1px 1px 0 var(--color-fuchsia),
+      3px 3px 0 var(--color-fuchsia);
+  }
+
+  .header-spacer {
+    width: 15px;
+  }
+
+  /* MAIN CONTENT */
+  .analisis-main {
+    margin-top: 20px;
+    padding: 10px;
+  }
+
+  /* UPLOAD SECTION */
+  .section-title {
+    font-size: 24px;
+  }
+
+  .upload-box {
+    width: 100%;
+    height: 120px;
+    padding: 25px 20px;
+  }
+
+  .upload-icon,
+  .maximize-icon {
+    font-size: 32px;
+  }
+
+  /* FORM LABEL */
+  .form-label {
+    font-size: 20px;
+    margin-bottom: 6px;
+  }
+
+  /* SELECT INPUT */
+  .form-select {
+    font-size: 18px;
+    padding: 12px;
+    background-position: right 10px center;
+  }
+
+  /* BUTTON */
+  .analyze-button {
+    padding: 12px 28px;
+    font-size: 20px;
+  }
+
+  .arrow-icon {
+    width: 24px;
+    height: 24px;
+    font-size: 14px;
+  }
+}

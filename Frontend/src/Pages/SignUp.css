@@ -270,3 +270,121 @@ font-size: 24px;
 .contact-item:hover .contact-icon {
   filter: brightness(1);
 }
+
+
+/* =======================
+   📱 MOBILE RESPONSIVE 
+   ======================= */
+@media (max-width: 768px) {
+
+  .signup-container {
+    height: auto;
+    min-height: 100vh;
+    overflow-y: auto !important;
+    padding-bottom: 120px; /* ada ruang buat footer */
+  }
+
+  .signup-header {
+    top: 10px;
+    position: relative;
+    margin-bottom: 20px;
+  }
+
+  .app-title {
+    font-size: 60px;
+  }
+
+  .app-subtitle {
+    font-size: 22px;
+    margin-left: 0;
+  }
+
+  .signup-card {
+    width: 90%;
+    padding: 25px 20px;
+    margin-top: 50px;
+  }
+
+  .signup-form input {
+    width: 100%;
+    font-size: 18px;
+    padding: 14px;
+  }
+
+  .btn-continue,
+  .google-btn {
+    width: 100%;
+    font-size: 20px;
+    padding: 14px;
+  }
+
+  .password-field input {
+    font-size: 18px;
+  }
+
+  .eye-icon {
+    width: 24px;
+    height: 24px;
+    right: 10px;
+  }
+
+  /* karakter buram di belakang */
+  .character {
+    width: 300px;
+    right: -40px;
+    top: 60%;
+    opacity: 0.2;
+  }
+
+  .character img {
+    width: 100%;
+  }
+
+  /* skincare item */
+  .skincare {
+    width: 60px !important;
+    opacity: 0.7;
+  }
+
+  .spf {
+    left: 5%;
+    bottom: 30%;
+  }
+
+  .toner {
+    right: 5%;
+    top: 30%;
+  }
+
+  .moisturizer {
+    right: 10%;
+    bottom: 15%;
+  }
+
+  /* Bubble kecil */
+  .bubble {
+    opacity: 0.3;
+  }
+
+  /* Footer dibikin full dan rapi */
+  .skinanalyze-footer, 
+  .signup-footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    padding: 15px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .contact-item {
+    font-size: 16px;
+  }
+
+  .contact-icon {
+    width: 25px;
+    height: 25px;
+  }
+}

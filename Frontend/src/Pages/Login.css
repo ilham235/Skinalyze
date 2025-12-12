@@ -237,3 +237,135 @@ body {
 .bubble-12 { width: 27px; height: 70px; top: 5%; right: 55%; opacity: 0.8; }
 .bubble-13 { width: 86px; height: 30px; bottom: 50%; left: 5%; opacity: 0.5; }
 .bubble-14 { width: 91px; height: 45px; top: 85%; left: 40%; opacity: 0.7; }
+
+
+/* ================================
+   📱 RESPONSIVE MOBILE FIX (≤480px)
+   ================================ */
+@media (max-width: 480px) {
+
+    /* Perbaiki scroll mobile */
+    html, body {
+        height: auto !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+    }
+
+    .login-container {
+        height: auto !important;
+        min-height: 100vh !important;
+        overflow: visible !important;
+        padding-bottom: 60px; /* agar footer tidak ketutup */
+    }
+
+    /* Header title disesuaikan */
+    .app-title {
+        font-size: 60px !important;
+        text-shadow: 
+            -1px -1px 0 var(--color-fuchsia),
+            1px -1px 0 var(--color-fuchsia),
+            -1px 1px 0 var(--color-fuchsia),
+            1px 1px 0 var(--color-fuchsia);
+    }
+
+    .app-subtitle {
+        font-size: 22px !important;
+        margin-left: 0;
+    }
+
+    /* Logo bulat mengecil */
+    .logo-circle {
+        width: 120px;
+        height: 120px;
+        margin-top: 10px;
+    }
+
+    .logo-circle img {
+        width: 120px !important;
+        height: 120px !important;
+    }
+
+    /* Form input mengecil */
+    .login-form {
+        width: 100%;
+        padding: 0 20px;
+        font-size: 16px;
+    }
+
+    .login-form input {
+        width: 100% !important;
+        font-size: 16px;
+        padding: 10px 12px;
+    }
+
+    .password-container {
+        width: 100% !important;
+    }
+
+    .password-container input {
+        width: 100% !important;
+        font-size: 16px;
+    }
+
+    .eye-icon {
+        width: 22px;
+        height: 22px;
+        right: 10px;
+    }
+
+    /* Tombol dan Google button */
+    .btn-continue,
+    .google-btn {
+        width: 100% !important;
+        max-width: 100%;
+        font-size: 18px;
+        padding: 10px 15px;
+    }
+
+    .forgot-link {
+        font-size: 14px;
+    }
+
+    /* Background karakter diubah ukuran */
+    .karakter {
+        width: 250px;
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 28%;
+        opacity: 0.15;
+    }
+
+    /* Semua product icon dibuat kecil + ditata ulang agar rapi */
+    .product-icon {
+        width: 80px !important;
+        position: absolute;
+        opacity: 0.4;
+    }
+
+    .spf60 { top: 10%; left: 5%; }
+    .spf70 { top: 10%; right: 5%; }
+    .toner { top: 45%; left: 5%; }
+    .toner2 { top: 45%; right: 5%; }
+    .moisturizer { bottom: 15%; right: 5%; width: 70px !important; }
+    .moisturizer3 { bottom: 15%; left: 5%; width: 70px !important; }
+
+    /* Semua bubble diperkecil agar tidak menutup layar */
+    .bubble {
+        transform: scale(0.3) !important;
+        opacity: 0.4 !important;
+    }
+
+    /* Footer */
+    .skinanalyze-footer {
+        flex-direction: column;
+        gap: 8px;
+        font-size: 12px;
+        padding-bottom: 20px;
+    }
+
+    .contact-icon {
+        width: 18px;
+        height: 18px;
+    }
+}

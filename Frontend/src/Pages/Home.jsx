@@ -70,16 +70,20 @@ function Home() {
       {/* ✅ NAVBAR */}
       <nav className="navbar">
         <div className="nav-left">
-          {!isSidebarOpen && (
-            <div className="menu-toggle" onClick={toggleSidebar}>
-              &#9776;
-            </div>
-          )}
+  {!isSidebarOpen && (
+    <div className="menu-toggle" onClick={toggleSidebar}>
+      &#9776;
+    </div>
+  )}
 
-          <img src="/orang2.png" className="logo-girl" alt="Girl Logo" />
-          <h1 className="brand-name">Skinalyze</h1>
-          <span className="brand-tagline">Analyze Your Skin</span>
-        </div>
+  <img src="/orang2.png" className="logo-girl" alt="Girl Logo" />
+
+  <div className="brand-wrapper">
+    <h1 className="brand-name">Skinalyze</h1>
+    <span className="brand-tagline">Analyze Your Skin</span>
+  </div>
+</div>
+
 
         <div className="nav-right">
           <div className="nav-icon">

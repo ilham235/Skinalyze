@@ -108,3 +108,83 @@
   font-size: 20px;
   cursor: pointer;
 }
+
+@media (max-width: 768px) {
+    
+    /* 1. CONTAINER UTAMA */
+    .rekomendasi-container {
+        /* Memastikan bisa discroll */
+        overflow-x: hidden;
+        min-height: auto;
+    }
+
+    /* 2. NAVBAR */
+    .rekomendasi-navbar {
+        /* Mengubah tata letak navbar menjadi kolom agar elemen tersusun vertikal */
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 10px;
+    }
+    
+    /* 3. LOGO GAMBAR */
+    .rekomendasi-logo-girl {
+        height: 80px; /* Diperkecil dari 170px */
+        margin: 10px auto; /* Ditengahkan di atas */
+    }
+
+    /* 4. NAMA MEREK */
+    .rekomendasi-brand-name {
+        font-size: 40px; /* Diperkecil drastis dari 128px */
+        text-align: center;
+        letter-spacing: 2px;
+        /* Sesuaikan shadow agar proporsional */
+        text-shadow: 
+            -1.5px -1.5px 0 var(--color-fuchsia),
+            1.5px -1.5px 0 var(--color-fuchsia),
+            -1.5px 1.5px 0 var(--color-fuchsia),
+            1.5px 1.5px 0 var(--color-fuchsia);
+    }
+    
+    /* 5. TAGLINE */
+    .rekomendasi-brand-tagline {
+        font-size: 18px; /* Diperkecil dari 50px */
+        margin: 5px 0 20px 0; /* Memberi jarak yang rapi */
+        text-align: center;
+    }
+
+    /* 6. MAIN CONTENT */
+    .rekomendasi-main {
+        padding: 20px 10px; /* Padding lebih kecil */
+        margin-top: 0; /* Hapus margin negatif yang mengacaukan tata letak */
+        text-align: center;
+    }
+
+    /* 7. REKOMENDASI BOX */
+    .rekomendasi-box {
+        width: 100%; /* Menggunakan lebar penuh layar */
+        padding: 20px;
+        gap: 15px; /* Jarak antar kotak rekomendasi lebih kecil */
+        /* Flex-wrap sudah benar untuk membungkus ke baris baru */
+    }
+
+    /* 8. KARTU REKOMENDASI */
+    .rekomendasi-category {
+        width: 100%; /* Setiap kartu mengambil lebar penuh di mobile */
+        max-width: 300px; /* Batasi lebar agar tidak terlalu besar di tablet/landscape mobile */
+        margin: 0 auto; /* Tengah-kan kartu jika max-width diterapkan */
+    }
+    
+    .rekomendasi-category h3 {
+        font-size: 18px; /* Disesuaikan */
+    }
+
+    .rekomendasi-category p {
+        font-size: 12px; /* Disesuaikan */
+    }
+    
+    /* 9. TOMBOL FOOTER */
+    .rekomendasi-more-btn {
+        padding: 12px 30px; /* Padding lebih kecil */
+        font-size: 16px; /* Font lebih kecil */
+    }
+}

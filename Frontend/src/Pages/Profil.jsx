@@ -96,7 +96,24 @@ const Profil = () => {
                 </div>
             </div>
 
-                  <footer className="skinanalyze-footer">
+            <div className="details-section">
+                <DetailItem label="Nama" value=":" />
+                <DetailItem label="E-mail" value=":" />
+                <DetailItem label="Alamat" value=":" />
+                <DetailItem label="Tempat, Tanggal Lahir" value=":" />
+            </div>
+
+            <div className="edit-button-container">
+                <button className="edit-button">
+                    Edit Profile
+                </button>
+            </div>
+            <div className="simpan-button-container">
+                <button className="simpan-button">
+                    Simpan
+                </button>
+            </div>
+            <footer className="skinanalyze-footer">
         <div className="contact-item">
           <img src="/email.png" alt="Email" className="contact-icon" />
           <span className="contact-link">skinalyze@gmail.com</span>
@@ -112,19 +129,6 @@ const Profil = () => {
           <span>skinalyze_official</span>
         </div>
       </footer>
-
-            <div className="details-section">
-                <DetailItem label="Nama" value=":" />
-                <DetailItem label="E-mail" value=":" />
-                <DetailItem label="Alamat" value=":" />
-                <DetailItem label="Tempat, Tanggal Lahir" value=":" />
-            </div>
-
-            <div className="edit-button-container">
-                <button className="edit-button">
-                    Edit Profile
-                </button>
-            </div>
         </div>
     );
 };

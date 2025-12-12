@@ -95,6 +95,7 @@
 
 /* NAVBAR */
 .edukasi-navbar {
+  position: relative;
   display: flex;
   align-items: center;
   padding: 15px 40px;
@@ -184,4 +185,124 @@
   color: #333;
   font-size: 20px;
   outline: none;
+}
+
+
+/* ================================
+   📱 MOBILE VIEW (Max 768px)
+   ================================ */
+@media (max-width: 768px) {
+
+  /* FIX: Biarkan container full scroll */
+  .edukasi-container {
+    height: auto;
+    overflow-y: auto;
+  }
+
+  /* === NAVBAR === */
+  .edukasi-navbar {
+    position: relative;
+    top: 0;
+    z-index: 999;
+    width: 100%;
+    padding: 12px 15px;
+    display: flex;
+    align-items: center;
+    background: #E6F0FF;
+  }
+
+  /* Susunan: hamburger – foto – brand */
+  .edukasi-nav-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .edukasi-menu-toggle {
+    font-size: 35px;
+    margin: 0;
+    padding: 5px;
+    cursor: pointer;
+    color: #ff7fca;
+  }
+
+  .edukasi-logo-girl {
+    height: 55px;
+    margin: 0;
+  }
+
+  /* BRAND dibungkus agar tagline selalu di bawah */
+  .edukasi-brand-wrapper {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+  }
+
+  .edukasi-brand-name {
+    font-size: 32px;
+    margin: 0;
+    text-shadow: 
+      -2px -2px 0 var(--color-fuchsia),
+       2px -2px 0 var(--color-fuchsia),
+      -2px  2px 0 var(--color-fuchsia),
+       2px  2px 0 var(--color-fuchsia);
+  }
+
+  .edukasi-brand-tagline {
+    font-size: 16px;
+    margin: 0;
+    opacity: 0.8;
+    display: flex;
+  align-items: center;
+  padding: 10px 50px;
+  }
+
+  /* === SIDEBAR MOBILE === */
+  .edukasi-sidebar {
+    width: 260px !important;
+    left: -280px;
+  }
+
+  .edukasi-sidebar.open {
+    left: 0;
+  }
+
+  .edukasi-sidebar-logo {
+    font-size: 50px;
+    margin-left: 20px;
+  }
+
+  .edukasi-sidebar-menu li {
+    font-size: 22px;
+    margin: 25px 0;
+    padding-left: 25px;
+    gap: 15px;
+  }
+
+  .edukasi-logout-btn {
+    padding: 10px 40px;
+    font-size: 20px;
+    margin-bottom: 40px !important;
+  }
+
+  /* === MAIN CONTENT === */
+  .edukasi-main {
+    margin-top: 20px;
+    padding: 20px;
+    background: #e6f0ff;
+    height: auto;
+  }
+
+  .edukasi-title {
+    font-size: 28px;
+    text-align: center;
+  }
+
+  .edukasi-box {
+    width: 90%;
+    padding: 15px;
+    font-size: 16px;
+    min-height: 300px;
+  }
+
 }

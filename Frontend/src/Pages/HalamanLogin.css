@@ -25,7 +25,7 @@ body {
     flex-direction: column;
     align-items: center;
     position: relative;
-    overflow: hidden; /* Penting untuk gelembung dan elemen absolut */
+    overflow: hidden; /* INI PENYEBAB MOBILE GA BISA SCROLL */
     padding-bottom: 0px; /* Ruang untuk footer */
 }
 
@@ -38,15 +38,15 @@ body {
     height: 200px;
     border-radius: 50%;
     background-color: var(--color-soft-pink);
-    opacity: 0.6; /* Lebih transparan */
-    z-index: 0; /* Di belakang konten utama */
+    opacity: 0.6; 
+    z-index: 0;
 }
 
 /* Header */
 .skinanalyze-header {
     text-align: center;
     padding-top: 50px;
-    z-index: 2; /* Pastikan di atas gelembung */
+    z-index: 2;
 }
 
 .skinanalyze-logo {
@@ -55,22 +55,20 @@ body {
     font-family: 'Abril Fatface', sans-serif;
     color: var(--color-soft-pink);
     text-shadow: 
-        -3px -3px 0 var(--color-fuchsia),  /* Outline putih lebih tebal */
+        -3px -3px 0 var(--color-fuchsia),
         3px -3px 0 var(--color-fuchsia),
         -3px 3px 0 var(--color-fuchsia),
         3px 3px 0 var(--color-fuchsia),
-        6px 6px 0 var(--color-fuchsia); /* Bayangan pink yang solid */
+        6px 6px 0 var(--color-fuchsia);
     letter-spacing: 7px;
-    transform: translateX(-800px); /* Pertahankan atau sesuaikan jika perlu digeser */
+    transform: translateX(-800px);
     position: relative;
 }
 
 .skinanalyze-tagline {
     font-size: 50px;
     color: var(--color-light-gray-text);
-
     font-family: 'Great Vibes', cursive;
-
     margin-top: -80px;
     margin-left: -1600px;
 }
@@ -78,16 +76,16 @@ body {
 /* Konten Utama */
 .skinanalyze-main-content {
     display: flex;
-    justify-content: center; /* Pusatkan konten */
+    justify-content: center;
     align-items: center;
     width: 90%;
-    max-width: 1400px; /* Lebar maksimal diperbesar */
+    max-width: 1400px;
     margin-top: 50px;
     flex-wrap: wrap; 
     z-index: 1;
 }
 
-/* --- Bagian Kiri (Teks dan Lingkaran Profil) --- */
+/* Bagian Kiri */
 .left-section {
     flex-basis: 40%;
     display: flex;
@@ -111,7 +109,7 @@ body {
 }
 
 .profile-icon {
-    width: 110%; /* Sesuaikan ukuran ikon di dalam lingkaran */
+    width: 110%;
     height: auto;
 }
 
@@ -125,21 +123,21 @@ body {
 }
 
 .scan-shelf-text {
-    font-weight: 900; /* Lebih tebal */
-    color: var(--color-text-brown); /* Pastikan warnanya sama */
+    font-weight: 900;
+    color: var(--color-text-brown);
 }
 
-/* --- Bagian Kanan (Ilustrasi dan Tombol) --- */
+/* Bagian Kanan */
 .right-section-illustration {
     flex-basis: 50%;
     position: relative;
-    min-width: 500px; /* Minimum width untuk ilustrasi */
-    max-width: 600px; /* Maksimum width */
+    min-width: 500px;
+    max-width: 600px;
     margin: 20px;
-    display: flex; /* Untuk menempatkan tombol di bawah ilustrasi */
+    display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 30px; /* Ruang untuk tombol */
+    padding-bottom: 30px;
 }
 
 .skincare-illustration-woman {
@@ -153,8 +151,7 @@ body {
     transform-origin: center;
 }
 
-
-/* Ikon Produk (Ditempatkan secara absolut relatif terhadap .right-section-illustration) */
+/* Ikon Produk */
 .product-icon {
     position: absolute;
     width: 80px;
@@ -183,17 +180,16 @@ body {
     transform: rotate(-5deg);
 }
 
-
+/* Gelembung */
 .bubble {
     position: absolute;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.6);
     box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.9), 0 0 5px rgba(0, 0, 0, 0.08);
-    z-index: 1; /* Di bawah ilustrasi wanita */
+    z-index: 1;
     pointer-events: none;
 }
 
-/* Penempatan gelembung agar mirip dengan gambar */
 .bubble-1 { width: 80px; height: 80px; top: 10%; left: 45%; opacity: 0.8; }
 .bubble-2 { width: 60px; height: 60px; top: 25%; right: 28%; opacity: 0.7; }
 .bubble-3 { width: 40px; height: 40px; top: 55%; left: 20%; opacity: 0.6; }
@@ -202,50 +198,47 @@ body {
 .bubble-6 { width: 30px; height: 30px; bottom: 50%; left: 5%; opacity: 0.5; }
 .bubble-7 { width: 45px; height: 45px; top: 85%; left: 40%; opacity: 0.7; }
 
-/* Container Tombol */
+/* Tombol */
 .button-container {
-    position: relative;         /* Tetap di area ilustrasi */
-    top: 27px;                 /* Geser ke bawah dari posisi awal */
-    left: 82%;                  /* Geser sedikit ke kanan biar sejajar di bawah gambar */
-    transform: translateX(-50%);/* Center horizontal biar rapi */
+    position: relative;
+    top: 27px;
+    left: 82%;
+    transform: translateX(-50%);
     display: flex;
     flex-direction: column;
-    gap: 15px;                  /* Jarak antar tombol */
+    gap: 15px;
     align-items: center;
     width: 80%;
     max-width: 300px;
-    z-index: 4;                 /* Pastikan di atas elemen lain */
+    z-index: 4;
 }
 
-
-
 .main-button {
-    padding: 15px 0; /* Padding lebih besar */
+    padding: 15px 0;
     border-radius: 8px;
     border: none;
-    font-size: 19px; /* Lebih besar */
-    font-weight: 700; /* Lebih tebal */
+    font-size: 19px;
+    font-weight: 700;
     cursor: pointer;
     color: var(--color-white);
     background-color: var(--color-medium-blue);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Bayangan lebih kuat */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     transition: background-color 0.3s ease;
     width: 100250px;
     max-width: 190%;
 }
 
 .main-button:hover {
-    background-color: #5d97d0; /* Warna hover sedikit lebih gelap */
+    background-color: #5d97d0;
 }
 
 /* Footer */
 .skinanalyze-footer {
     position: absolute;
-     width: 100%;
+    width: 100%;
     height: 40px;
     bottom: 0;
     left: 0;
-    right: 0;
     background-color: var(--color-footer-blue);
     padding: 10px 0;
     display: flex;
@@ -259,125 +252,133 @@ body {
 .contact-item {
     display: flex;
     align-items: center;
-    gap: 12px; /* jarak antar ikon & teks sedikit lebih lega */
+    gap: 12px;
 }
 
 .contact-icon {
-    width: 35px;   /* dulu mungkin 24px, ubah jadi 30–40px */
-    height: 35px;  /* samakan supaya proporsional */
+    width: 35px;
+    height: 35px;
 }
 
 .contact-link,
 .contact-item span {
-    font-size: 20px;  /* perbesar teks */
-    font-weight: 600; /* bikin sedikit tebal biar seimbang sama ikon */
-    color: #2e2e2e;   /* bisa ubah sesuai tema kamu */
+    font-size: 20px;
+    font-weight: 600;
+    color: #2e2e2e;
 }
 
+/* ==================== MEDIA QUERY ==================== */
 
-/* Responsif */
 @media (max-width: 1024px) {
-    .skinanalyze-logo {
-        font-size: 70px;
-    }
-    .skinanalyze-tagline {
-        font-size: 18px;
-    }
-    .text-block {
-        font-size: 17px;
-    }
-    .profile-circle {
-        width: 180px;
-        height: 180px;
-    }
-    .skincare-illustration-woman {
-        max-width: 500px;
-    }
-    .product-icon {
-        width: 70px;
-    }
-    .spf60 { width: 90px; top: 25%; left: 8%; }
-    .toner { width: 80px; top: 3%; right: 3%; }
-    .moisturizer { width: 100px; bottom: 20%; right: 3%; }
+    .skinanalyze-logo { font-size: 70px; }
+    .skinanalyze-tagline { font-size: 18px; }
+    .text-block { font-size: 17px; }
+    .profile-circle { width: 180px; height: 180px; }
 }
 
 @media (max-width: 768px) {
-    .skinanalyze-main-content {
-        flex-direction: column;
-        margin-top: 30px;
-    }
+    .skinanalyze-main-content { flex-direction: column; margin-top: 30px; }
     .left-section, .right-section-illustration {
         flex-basis: 100%;
         max-width: 90%;
         min-width: unset;
         margin-top: 30px;
     }
-    .skinanalyze-logo {
-        font-size: 50px;
-        letter-spacing: 3px;
-    }
-    .skinanalyze-tagline {
-        font-size: 16px;
-        margin-top: -15px;
-    }
-    .profile-circle {
-        width: 150px;
-        height: 150px;
-        border-width: 3px;
-    }
-    .text-block {
-        font-size: 16px;
-        margin-top: 30px;
-    }
-    .button-container {
-        width: 80%;
-        max-width: 280px;
-        margin-top: 25px;
-    }
-    .main-button {
-        padding: 12px 0;
-        font-size: 17px;
-    }
-    .skincare-illustration-woman {
-        max-width: 400px;
-    }
-    .product-icon {
-        width: 60px;
-    }
-    .spf60 { width: 75px; top: 20%; left: 5%; }
-    .toner { width: 65px; top: 0%; right: 0%; }
-    .moisturizer { width: 80px; bottom: 15%; right: 0%; }
+    .skinanalyze-logo { font-size: 50px; letter-spacing: 3px; }
+    .skinanalyze-tagline { font-size: 16px; margin-top: -15px; }
+    .profile-circle { width: 150px; height: 150px; }
+    .text-block { font-size: 16px; margin-top: 30px; }
+    .button-container { width: 80%; max-width: 280px; margin-top: 25px; }
+    .main-button { padding: 12px 0; font-size: 17px; }
+    .skincare-illustration-woman { max-width: 400px; }
+    .bubble { display: none; }
 
     .skinanalyze-footer {
+        position: relative;
         flex-direction: column;
-        gap: 8px;
         padding: 15px 0;
-        position: relative; /* Jangan absolut di layar kecil */
+        height: auto;
         margin-top: 40px;
     }
-    .contact-item {
-        font-size: 13px;
-    }
-    .contact-icon {
-        width: 18px;
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+    .skinanalyze-logo { font-size: 55px; transform: none; margin-left: 0; }
+    .skinanalyze-tagline { margin-left: 0; font-size: 20px; }
+
+    .profile-circle {
+        width: 230px;
+        height: 230px;
+        margin-left: 0;
+        margin-top: 20px;
     }
 
-    /* Sesuaikan gelembung untuk layar kecil */
-    .bubble { display: none; } /* Bisa disembunyikan atau diatur ulang */
+    .text-block {
+        margin-left: 0;
+        font-size: 17px;
+        margin-top: 15px;
+    }
+
+    .right-section-illustration {
+        min-width: unset;
+        max-width: 100%;
+        margin-top: 10px;
+    }
+
+    .skincare-illustration-woman {
+        transform: none;
+        scale: 1;
+        margin: 0 auto;
+        width: 80%;
+    }
+
+    .product-icon { display: none; }
+    .bubble { display: none; }
+
+    .button-container {
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: none;
+        width: 80%;
+        max-width: 250px;
+        margin: 20px auto;
+    }
+
+    .main-button {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .skinanalyze-footer {
+        position: relative !important;
+        flex-direction: column;
+        gap: 6px;
+        padding: 15px 0;
+        height: auto;
+        margin-top: 30px;
+    }
 }
+
+/*  
+===============================================
+======  FIX AGAR MOBILE BISA SCROLL  ==========
+===============================================
+*/
 
 @media (max-width: 480px) {
-    .skinanalyze-logo {
-        font-size: 40px;
-        letter-spacing: 2px;
+
+    html, body {
+        height: auto !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
     }
-    .skinanalyze-tagline {
-        font-size: 14px;
-    }
-    .background-circle-top-left {
-        width: 150px;
-        height: 150px;
-        top: -70px;
-        left: -70px;
+
+    .skinanalyze-container {
+        height: auto !important;      /* LEPAS KUNCI 100vh */
+        min-height: 100vh !important; /* TETAP PANJANG */
+        overflow: visible !important; /* SCROLL AKTIF */
     }
 }
+

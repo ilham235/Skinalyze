@@ -16,7 +16,8 @@
 }
 
 .navbar {
-  width: 70%;
+  position: relative;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -57,26 +58,20 @@
   font-size: 60px;
   cursor: pointer;
   user-select: none;
-  margin-right: -100px;
-  margin-top: 10px;
+  margin-right: 20px;
+  margin-top: 0px;
   margin-left: 70px;
   color: #ff7fca;
   transition: 0.2s;
 }
 
-.menu-toggle:hover {
-  transform: scale(1.15);
-}
 
 
 .brand-tagline {
     font-size: 50px;
     color: var(--color-light-gray-text);
-
     font-family: 'Great Vibes', cursive;
-
-    margin-top: 200px;
-    margin-left: -500px;
+    margin-left: 150px;
 }
 
 .nav-right {
@@ -230,4 +225,204 @@
 
   margin-left: auto;
   margin-right: auto;
+}
+
+
+  @media (max-width: 768px) {
+
+
+  /* PAGE ALLOW FULL SCROLL */
+  body,
+  .home-container {
+    overflow-y: auto !important;
+    height: auto !important;
+  }
+
+
+  /* NAVBAR */
+  .navbar {
+    position: relative !important;
+    width: 100%;
+    padding: 15px 20px;
+  }
+
+
+  .nav-left {
+    gap: 10px;
+  }
+
+
+  .menu-toggle {
+    font-size: 40px;
+    margin-left: 0;
+    margin-right: 10px;
+  }
+
+
+  .logo-girl {
+    height: 80px;
+    margin: 0;
+  }
+
+
+  .brand-name {
+    font-size: 48px;
+    text-shadow:
+      -2px -2px 0 var(--color-fuchsia),
+      2px -2px 0 var(--color-fuchsia),
+      -2px 2px 0 var(--color-fuchsia),
+      2px 2px 0 var(--color-fuchsia);
+  }
+
+
+  .brand-tagline {
+    margin: 0;
+    font-size: 22px;
+    transform: translateY(-10px);
+  }
+
+
+  .nav-right {
+    display: none;
+  }
+
+
+  /* SIDEBAR */
+  .sidebar {
+    width: 280px !important;
+    left: -300px;
+  }
+
+
+  .sidebar.open {
+    left: 0;
+  }
+
+
+  .sidebar-logo {
+    font-size: 48px;
+  }
+
+
+  .sidebar-menu li {
+    font-size: 22px;
+    padding-left: 25px;
+    margin: 30px 0;
+  }
+
+
+  .logout-btn {
+    padding: 10px 40px;
+    font-size: 20px;
+  }
+
+
+  /* HERO BOX */
+  .hero-box {
+    width: 90%;
+    padding: 25px;
+    font-size: 18px;
+  }
+
+
+  .hero-text {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+
+  .analyze-btn {
+    font-size: 22px;
+    padding: 12px 25px;
+    margin-top: 40px;
+  }
+
+
+  /* EDUCATION BUTTON */
+  .education-btn {
+    font-size: 22px;
+    margin-left: 0;
+    margin-top: 25px;
+  }
+
+
+  /* FOOTER */
+  .skinanalyze-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 40px;
+    padding-bottom: 40px;
+  }
+
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+
+  .contact-icon {
+    width: 28px;
+  }
+}
+
+
+@media (max-width: 768px) {
+
+  /* HAPUS sticky agar hamburger TIDAK ikut scroll */
+  .navbar {
+    position: relative !important;
+    top: 0;
+    z-index: 50;
+    padding: 12px 18px;
+  }
+
+  .nav-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .menu-toggle {
+    order: 1;
+    font-size: 38px;
+    margin: 0;
+  }
+
+  .logo-girl {
+    order: 2;
+    height: 55px;
+    margin: 0;
+  }
+
+  .brand-wrapper {
+    order: 3;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .brand-name {
+    font-size: 32px;
+    margin: 0;
+  }
+
+  .brand-tagline {
+    font-size: 16px;
+    margin: 0;
+  }
+
+  .nav-right {
+    display: none;
+  }
+
+  .sidebar {
+    width: 280px !important;
+    left: -300px;
+  }
+
+  .sidebar.open {
+    left: 0;
+  }
 }
