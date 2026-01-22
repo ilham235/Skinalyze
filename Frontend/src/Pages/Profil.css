@@ -1,44 +1,43 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap');
 
-/* === CSS RESET & GLOBAL LAYOUT (PENTING!) === */
+/* === CSS RESET & GLOBAL LAYOUT === */
 html, body {
     margin: 0;
     padding: 0;
-    min-height: 100vh; /* Menggunakan vh untuk memastikan tinggi penuh layar */
-    background-color: var(--color-light-blue); /* Latar belakang halaman */
+    min-height: 100vh;
+    background-color: var(--color-light-blue);
     font-family: 'Poppins', sans-serif;
     overflow: hidden;
 }
 
-/* Kunci agar padding/border tidak menambah lebar elemen */
 * {
-    box-sizing: border-box; 
+    box-sizing: border-box;
 }
 
-/* Variabel Warna Anda */
+/* === VARIABEL WARNA === */
 :root {
     --color-light-blue: #E6F0FF;
     --color-medium-blue: #77AADD;
-    --color-soft-pink: #FFC0CB; /* Merah muda pucat untuk kotak input */
-    --color-fuchsia: #FF69B4; /* Merah muda cerah untuk tombol */
-    --color-text-brown: #A0522D; /* Warna judul/teks utama */
-    --color-footer-blue: #ADD8E6; /* Warna footer/ikon */
-    --color-light-gray-text: #708090; /* Warna teks info */
+    --color-soft-pink: #FFC0CB;
+    --color-fuchsia: #FF69B4;
+    --color-text-brown: #A0522D;
+    --color-footer-blue: #ADD8E6;
+    --color-light-gray-text: #708090;
     --color-white: #FFFFFF;
 }
 
-/* --- Profile Container: Menengahkan Seluruh Kotak Profil --- */
+/* === PROFILE CONTAINER === */
 .profile-container {
     max-width: 1400px;
-    width: 90%; /* Responsif di layar kecil */
-    margin: 100px auto; /* Ditengahkan di tengah horizontal */
+    width: 90%;
+    margin: 100px auto;
     padding: 100px;
     background-color: var(--color-white);
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
-/* --- Header Section --- */
+/* === HEADER === */
 .header-section {
     display: flex;
     align-items: center;
@@ -48,19 +47,19 @@ html, body {
 }
 
 .avatar-placeholder {
-    /* Anggap ini adalah komponen/gambar avatar Anda */
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    /* Gunakan gambar asli Anda di sini. Ini hanya fallback. */
-    background-color: var(--color-soft-pink); 
+    background-color: var(--color-soft-pink);
     margin-right: 20px;
+    overflow: hidden;
+    cursor: pointer;
 }
 
-.avatar-placeholder .avatar-img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .info-header h1 {
@@ -71,17 +70,16 @@ html, body {
 }
 
 .skin-type {
-    display: inline-block;
     background-color: var(--color-soft-pink);
     color: var(--color-text-brown);
     font-size: 24px;
     padding: 3px 8px;
     border-radius: 15px;
     margin-top: 5px;
-    font-weight: 400;
+    display: inline-block;
 }
 
-/* --- Input/Detail Section --- */
+/* === DETAIL SECTION === */
 .detail-item {
     display: flex;
     align-items: center;
@@ -89,235 +87,135 @@ html, body {
 }
 
 .detail-label {
-    width: 200px; 
+    width: 200px;
+    font-size: 24px;
     font-weight: 600;
     color: var(--color-light-gray-text);
-
-    font-size: 24px; /* Nilai default biasanya 14px atau 16px */
-    line-height: 25px;
 }
 
+/* BOX PINK (SATU-SATUNYA YANG PEGANG LAYOUT) */
 .detail-value-box {
     flex-grow: 1;
+    height: 60px;
     background-color: var(--color-soft-pink);
-    height: 60px; 
     border-radius: 5px;
+
     display: flex;
     align-items: center;
     padding: 0 10px;
-    color: var(--color-light-gray-text);
-    font-weight: 200;
 }
 
-/* --- Edit Button --- */
-.edit-button-container {
+/* === TEKS VIEW MODE === */
+.detail-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    font-weight: 200;
+    color: var(--color-light-gray-text);
+    line-height: 1;
+
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+/* === INPUT EDIT MODE (IDENTIK 100%) === */
+.detail-input {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+
+    background: transparent;
+    border: none;
+    outline: none;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    font-weight: 200;
+    color: var(--color-light-gray-text);
+    line-height: 1;
+
+    display: flex;
+    align-items: center;
+}
+
+/* === BUTTON === */
+.edit-button-container,
+.simpan-button-container {
     display: flex;
     justify-content: flex-end;
     margin-top: 40px;
 }
 
-.simpan-button-container {
-      display: flex;
-    justify-content: flex-end;
-    margin-top: 40px;
+.edit-button,
+.simpan-button {
+    background-color: var(--color-soft-pink);
+    color: var(--color-text-brown);
+    border: none;
+    border-radius: 20px;
+    font-size: 24px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
 .edit-button {
-    background-color: var(--color-soft-pink); 
-    color: var(--color-text-brown);
-    border: none;
     padding: 10px 25px;
-    border-radius: 20px;
-    font-size: 24px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s;
 }
 
 .simpan-button {
-    background-color: var(--color-soft-pink); 
-    color: var(--color-text-brown);
-    border: none;
     padding: 10px 45px;
-    border-radius: 20px;
-    font-size: 24px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s;
 }
 
 .edit-button:hover {
-    background-color: var(--color-fuchsia); 
+    background-color: var(--color-fuchsia);
 }
 
+/* === KARAKTER === */
 .karakter {
-  margin-right: -400px;
-  margin-top: 170px;
+    margin-right: -400px;
+    margin-top: 170px;
 }
 
-.menu-toggle {
-  font-size: 35px;
-  cursor: pointer;
-  padding: 15px;
-  color: #333;
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  z-index: 1001;
-}
-
-/* Sidebar */
-.sidebar {
-  position: fixed;
-  top: 0;
-  left: -730px; 
-  width: 600px !important; 
-  height: 100%;
-  background-color: #dce7ff;
-  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.1);
-  transition: left 0.3s ease;
-  z-index: 999;
-  display: flex;
-  flex-direction: column;
-}
-
-.sidebar.open {
-  left: 0;
-}
-
-.sidebar-logo {
-    font-size: 110px;
-    font-weight: 2000 ;
-    margin-left: 40px;
-    font-family: 'Abril Fatface', sans-serif;
-    color: var(--color-soft-pink);
-    text-shadow: 
-        -3px -3px 0 var(--color-fuchsia),
-        3px -3px 0 var(--color-fuchsia),  
-        -3px 3px 0 var(--color-fuchsia),
-        3px 3px 0 var(--color-fuchsia),
-        6px 6px 0 var(--color-fuchsia)
-}
-
-.sidebar-line {
-  width: 70%;
-  border: 1px solid #ff99cc;
-  margin: 8px 0 30px 0;
-  margin-top: -60px !important;
-}
-
-.sidebar-menu {
-  list-style: none;
-  padding: 0;
-  font: size 0px;
-  width: 100%;
-  margin-top: 20px;
-}
-
-.sidebar-menu li {
-  font-family: 'Poppins', sans-serif;
-  font-size: 40px;
-  color: #4b7cdc;
-  margin: 50px 0;
-  padding-left: 100px;
-  cursor: pointer;
-  transition: 0.2s;
-  display: flex;
-  align-items: center;
-  gap: 25px;
-}
-
-.sidebar-menu li:hover {
-  transform: scale(1.1);
-  color: #ff69b4;
-}
-
-.logout-btn {
-  margin-top: auto;
-  margin-bottom: 60px !important;
-  background-color: #77aadd;
-  color: white;
-  font-size: 35px;
-  border: none;
-  border-radius: 8px;
-  padding: 10px 220px;
-  cursor: pointer;
-  transition: 0.2s;
-
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.menu-toggle {
-  font-size: 60px;
-  cursor: pointer;
-  user-select: none;
-  margin-right: -100px;
-  margin-top: 10px;
-  margin-left: 70px;
-  color: #ff7fca;
-  transition: 0.2s;
-}
-
-.menu-toggle:hover {
-  transform: scale(1.15);
-}
-
-
-/* ======================================
-   📱 RESPONSIVE HEADER PROFIL (MOBILE)
-   ====================================== */
+/* === RESPONSIVE === */
 @media (max-width: 768px) {
+    html, body {
+        overflow-y: auto !important;
+    }
 
-  /* Biar halaman bisa discroll */
-  html, body {
-    overflow-y: auto !important;
-  }
+    .profile-container {
+        width: 95%;
+        padding: 20px;
+        margin: 120px auto;
+    }
 
-  /* Kotak profil mengecil */
-  .profile-container {
-    width: 95%;
-    padding: 20px;
-    margin: 120px auto;
-  }
+    .header-section {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
 
-  /* Header diubah jadi kolom */
-  .header-section {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 20px;
-  }
+    .avatar-placeholder {
+        width: 150px;
+        height: 150px;
+        margin: auto;
+    }
 
-  /* Foto profile */
-  .avatar-placeholder {
-    width: 150px;
-    height: 150px;
-    margin: 0 auto;
-  }
+    .info-header h1 {
+        font-size: 28px;
+    }
 
-  /* Nama user */
-  .info-header h1 {
-    font-size: 28px;
-    margin-top: 10px;
-  }
+    .skin-type {
+        font-size: 16px;
+    }
 
-  /* Skin type */
-  .skin-type {
-    font-size: 16px;
-    padding: 5px 12px;
-    margin-top: 5px;
-  }
+    .karakter {
+        margin: 0;
+        display: flex;
+        justify-content: center;
+    }
 
-  /* Gambar karakter */
-  .karakter {
-    margin: 0 !important;
-    display: flex;
-    justify-content: center;
-  }
-
-  .karakter img {
-    width: 180px;
-    height: auto;
-  }
+    .karakter img {
+        width: 180px;
+    }
 }

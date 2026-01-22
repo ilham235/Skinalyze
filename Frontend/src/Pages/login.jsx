@@ -1,20 +1,99 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // ✅ tambahkan ini
+import { useNavigate } from "react-router-dom";
+// Tambahkan GoogleAuthProvider dan signInWithPopup
+import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth"; 
+import { auth } from "../services/firebase"; 
+import api from "../services/api"; 
 import "./Login.css";
 
 const Login = () => {
-  // state buat hide/unhide password
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  // fungsi toggle
+  const navigate = useNavigate();
+
   const togglePassword = () => {
     setShowPassword(!showPassword);
   };
 
-  // ✅ tambahkan fungsi navigate ke Home
-  const navigate = useNavigate();
-  const handleContinue = () => {
-    navigate("/home");
+  // --- LOGIKA LOGIN EMAIL/PASSWORD (YANG SUDAH ADA) ---
+  const handleLogin = async (e) => {
+    e.preventDefault(); 
+
+    if (!email || !password) {
+      alert("Email dan password wajib diisi");
+      return;
+    }
+
+    try {
+      const userCred = await signInWithEmailAndPassword(auth, email, password);
+      const uid = userCred.user.uid;
+      
+      console.log("Firebase Login Sukses. UID:", uid);
+
+      // Sinkronisasi dengan Backend MySQL
+      const res = await api.post("/auth/login", { 
+      uid: uid,
+      email: email // <--- TAMBAHAN PENTING INI
+});
+      const userData = res.data;
+
+      localStorage.setItem("user", JSON.stringify(userData));
+      
+      // Navigasi
+      if (userData.role === 'admin') {
+        navigate("/admin/dashboard");
+      } else {
+        navigate("/home");
+      }
+
+    } catch (err) {
+      console.error("Login Error:", err);
+      if (err.response) {
+        alert("Gagal koneksi backend: " + (err.response.data.message || err.message));
+      } else if (err.code === 'auth/wrong-password' || err.code === 'auth/user-not-found' || err.code === 'auth/invalid-credential') {
+        alert("Email atau password salah.");
+      } else {
+        alert("Terjadi kesalahan. Pastikan server backend MySQL menyala.");
+      }
+    }
+  };
+
+  // --- LOGIKA BARU: LOGIN DENGAN GOOGLE ---
+  const handleGoogleLogin = async () => {
+    const provider = new GoogleAuthProvider();
+    
+    try {
+      // 1. Munculkan Popup Login Google
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user; // Data user dari Google
+      
+      console.log("Google Login Sukses:", user.email);
+
+      // 2. Cek ke Backend MySQL (Sama seperti login biasa)
+      // Kita kirim UID dan Email (untuk jaga-jaga kalau user baru)
+      const res = await api.post("/auth/login", { 
+        uid: user.uid,
+        email: user.email 
+      });
+      
+      const userData = res.data;
+
+      // 3. Simpan Session
+      localStorage.setItem("user", JSON.stringify(userData));
+
+      // 4. Navigasi
+      if (userData.role === 'admin') {
+        navigate("/admin/dashboard");
+      } else {
+        navigate("/home");
+      }
+
+    } catch (err) {
+      console.error("Google Login Error:", err);
+      alert("Gagal login dengan Google: " + err.message);
+    }
   };
 
   return (
@@ -40,14 +119,21 @@ const Login = () => {
 
         <h2 className="login-text">Login</h2>
 
-        <form className="login-form">
-          <input type="email" placeholder="Enter your email" required />
+        <form className="login-form" onSubmit={handleLogin}>
+          <input 
+            type="email" 
+            placeholder="Enter your email" 
+            value={email}
+            onChange={(e) => setEmail(e.target.value)} 
+            required 
+          />
 
-          {/* Password input + icon mata */}
           <div className="password-container">
             <input
               type={showPassword ? "text" : "password"}
-              placeholder="Confirm password"
+              placeholder="Enter password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)} 
               required
             />
             <img
@@ -55,19 +141,23 @@ const Login = () => {
               alt="toggle visibility"
               className="eye-icon"
               onClick={togglePassword}
+              style={{cursor: "pointer"}}
             />
           </div>
 
-          {/* ✅ tombol continue sekarang berpindah ke Home */}
           <button
-            type="button"
+            type="submit"
             className="btn-continue"
-            onClick={handleContinue}
           >
             Continue
           </button>
 
-          <div className="google-btn">
+          {/* UPDATE DI SINI: Tambahkan onClick dan style cursor */}
+          <div 
+            className="google-btn" 
+            onClick={handleGoogleLogin} 
+            style={{cursor: "pointer"}} // Agar terlihat bisa diklik
+          >
             <img src="/google.png" alt="Google" />
             <span>Continue with Google</span>
           </div>
@@ -78,6 +168,7 @@ const Login = () => {
         </form>
       </div>
 
+      {/* Dekorasi Gambar Produk */}
       <img src="Skincare.png" alt="SPF 60" className="product-icon spf60" />
       <img src="Skincare2.png" alt="Toner" className="product-icon toner" />
       <img src="Skincare3.png" alt="Moisturizer" className="product-icon moisturizer" />
@@ -85,6 +176,7 @@ const Login = () => {
       <img src="Skincare2.png" alt="Toner2" className="product-icon toner2" />
       <img src="Skincare3.png" alt="Moisturizer3" className="product-icon moisturizer3" />
 
+      {/* Dekorasi Bubbles */}
       <div className="bubble bubble-1"></div>
       <div className="bubble bubble-2"></div>
       <div className="bubble bubble-3"></div>
@@ -100,6 +192,7 @@ const Login = () => {
       <div className="bubble bubble-13"></div>
       <div className="bubble bubble-14"></div>
 
+      {/* Footer */}
       <footer className="skinanalyze-footer">
         <div className="contact-item">
           <img src="/email.png" alt="Email" className="contact-icon" />

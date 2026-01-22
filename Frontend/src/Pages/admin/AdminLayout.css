@@ -1,0 +1,31 @@
+.admin-layout {
+  display: flex;
+  height: 100vh;           /* layout full layar */
+  overflow: hidden;    /* layout TIDAK scroll */
+}
+
+.admin-sidebar {
+  width: 240px;
+  background: #1f2937;
+  color: white;
+  padding: 20px;
+}
+
+.admin-sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.admin-sidebar li {
+  padding: 12px 0;
+  cursor: pointer;
+}
+
+.admin-content {
+  flex: 1;
+  height: 100vh;                 /* 🔴 WAJIB */
+  overflow-y: auto;              /* SCROLL */
+  background: #f5f7fb;
+  padding: 24px;
+}
+

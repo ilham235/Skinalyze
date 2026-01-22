@@ -1,137 +1,173 @@
-import React, { useState, useRef, useEffect } from 'react';
-import './Profil.css'; 
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useRef, useEffect } from "react";
+import "./Profil.css";
+import { useNavigate } from "react-router-dom";
 
-const DetailItem = ({ label, value }) => (
-    <div className="detail-item">
-        <span className="detail-label">{label}</span>
-        <div className="detail-value-box">
-            {value}
-        </div>
+// --- KOMPONEN KECIL UNTUK FORM (JANGAN DIHAPUS) ---
+const DetailItem = ({ label, value, isEdit, onChange }) => (
+  <div className="detail-item">
+    <span className="detail-label">{label}</span>
+    <div className="detail-value-box">
+      {isEdit ? (
+        <input
+          className="detail-input"
+          value={value || ""}
+          onChange={onChange}
+        />
+      ) : (
+        <span className="detail-text">{value || "-"}</span>
+      )}
     </div>
+  </div>
 );
 
 const Profil = () => {
-    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-    const sidebarRef = useRef(null);
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+  const sidebarRef = useRef(null);
+  
+  // Ambil data user dari localStorage dengan aman
+  const userData = localStorage.getItem("user");
+  const user = userData ? JSON.parse(userData) : null;
+  const uid = user?.firebase_uid;
 
-    const toggleSidebar = () => {
-        setIsSidebarOpen(!isSidebarOpen);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isEdit, setIsEdit] = useState(false);
+  const [profile, setProfile] = useState({
+    nama: user?.nama || "Loading...",
+    email: user?.email || "",
+    alamat: "",
+    ttl: "",
+    photo: "/orang2.png",
+  });
+
+  // Ambil data dari database saat halaman dibuka
+  useEffect(() => {
+    if (uid) {
+      fetch(`http://localhost:5000/api/profile/${uid}`)
+        .then(res => res.json())
+        .then(data => {
+          if (data) {
+            setProfile({
+              nama: data.nama || user?.nama || "",
+              email: data.email || user?.email || "",
+              alamat: data.alamat || "",
+              ttl: data.ttl || "",
+              photo: data.photo || "/orang2.png",
+            });
+          }
+        })
+        .catch(err => console.error("Gagal ambil profil:", err));
+    }
+  }, [uid]);
+
+  const handleSimpan = async () => {
+    if (!uid) return alert("User ID tidak ditemukan. Silakan login ulang.");
+    
+    try {
+      const response = await fetch(`http://localhost:5000/api/profile/${uid}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(profile),
+      });
+
+      if (response.ok) {
+        alert("Profil berhasil disimpan!");
+        setIsEdit(false);
+      } else {
+        alert("Gagal menyimpan ke server.");
+      }
+    } catch (err) {
+      console.error("Error saat simpan:", err);
+      alert("Terjadi kesalahan koneksi ke server.");
+    }
+  };
+
+  const handlePhotoChange = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setProfile({ ...profile, photo: reader.result });
     };
+    reader.readAsDataURL(file);
+  };
 
-    // ✅ Tutup sidebar saat klik di luar area
-    useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (
-                sidebarRef.current &&
-                !sidebarRef.current.contains(event.target) &&
-                !event.target.closest(".menu-toggle")
-            ) {
-                setIsSidebarOpen(false);
-            }
-        };
+  // Jika user belum login, arahkan ke login atau tampilkan pesan sederhana
+  if (!uid) {
+    return <div style={{padding: "20px", textAlign: "center"}}>Silakan login terlebih dahulu.</div>;
+  }
 
-        if (isSidebarOpen) {
-            document.addEventListener("mousedown", handleClickOutside);
-        } else {
-            document.removeEventListener("mousedown", handleClickOutside);
-        }
+  return (
+    <div className="profile-container">
+      {/* Tombol Menu untuk Sidebar */}
+      <button className="menu-toggle" onClick={() => setIsSidebarOpen(true)}>☰</button>
 
-        return () => document.removeEventListener("mousedown", handleClickOutside);
-    }, [isSidebarOpen]);
+      {/* Sidebar (Sederhana) */}
+      {isSidebarOpen && (
+        <div className="sidebar-overlay">
+          <div className="sidebar" ref={sidebarRef}>
+            <button onClick={() => setIsSidebarOpen(false)}>Close</button>
+            <nav>
+              <p onClick={() => navigate("/dashboard")}>Dashboard</p>
+              <p onClick={() => navigate("/analisis")}>Analisis</p>
+              <p onClick={() => navigate("/history")}>History</p>
+            </nav>
+          </div>
+        </div>
+      )}
 
-    return (
-        <div className="profile-container">
-{!isSidebarOpen && (
-  <div className="menu-toggle" onClick={toggleSidebar}>
-    &#9776;
-  </div>
-)} 
-
-            {/* ✅ SIDEBAR */}
-            <div ref={sidebarRef} className={`sidebar ${isSidebarOpen ? "open" : ""}`}>
-                <h2 className="sidebar-logo">Skinalyze</h2>
-                <hr className="sidebar-line" />
-
-                <ul className="sidebar-menu">
-                    <li onClick={() => navigate("/home")}>
-                        <img src="home.png" alt="Home" className="menu-icon" />
-                        <span>Home</span>
-                    </li>
-                    <li onClick={() => navigate("/profil")}>
-                        <img src="profil.png" alt="Profil" className="menu-icon" />
-                        <span>Profil</span>
-                    </li>
-                    <li onClick={() => navigate("/riwayat")}>
-                        <img src="riwayat.png" alt="Riwayat" className="menu-icon" />
-                        <span>Riwayat</span>
-                    </li>
-                </ul>
-
-                <button className="logout-btn" onClick={() => navigate("/")}>
-                    <i className="fa fa-sign-out"></i> Log Out
-                </button>
-            </div>
-
-            {/* ✅ Bagian Profil (punyamu tidak diubah) */}
-            <div className="header-section">
-                <div className="avatar-placeholder">
-                    <img 
-                        src="/orang2.png" 
-                        alt="Avatar Profil" 
-                        className="avatar-img" 
-                    />
-                </div> 
-
-                <div className="karakter">
-                    <img src="/Orang1.png" alt="karakter" />
-                </div>
-
-                <div className="info-header">
-                    <h1>Your Name</h1>
-                    <span className="skin-type">
-                        Skin Type : Combination Skin . Moderate hydration
-                    </span>
-                </div>
-            </div>
-
-            <div className="details-section">
-                <DetailItem label="Nama" value=":" />
-                <DetailItem label="E-mail" value=":" />
-                <DetailItem label="Alamat" value=":" />
-                <DetailItem label="Tempat, Tanggal Lahir" value=":" />
-            </div>
-
-            <div className="edit-button-container">
-                <button className="edit-button">
-                    Edit Profile
-                </button>
-            </div>
-            <div className="simpan-button-container">
-                <button className="simpan-button">
-                    Simpan
-                </button>
-            </div>
-            <footer className="skinanalyze-footer">
-        <div className="contact-item">
-          <img src="/email.png" alt="Email" className="contact-icon" />
-          <span className="contact-link">skinalyze@gmail.com</span>
+      <div className="header-section">
+        <div 
+          className="avatar-placeholder" 
+          onClick={() => isEdit && document.getElementById("photoInput").click()}
+          style={{ cursor: isEdit ? 'pointer' : 'default' }}
+        >
+          <img src={profile.photo} className="avatar-img" alt="Profile" />
+          {isEdit && <input id="photoInput" type="file" hidden onChange={handlePhotoChange} />}
         </div>
 
-        <div className="contact-item">
-          <img src="/Instagram.png" alt="Instagram" className="contact-icon" />
-          <span>skinalyze_official</span>
+        <div className="info-header">
+          <h1>{profile.nama}</h1>
+          <span className="skin-type">Skin Type : Analyzed via AI</span>
         </div>
+      </div>
 
-        <div className="contact-item">
-          <img src="/tiktok.png" alt="TikTok" className="contact-icon" />
-          <span>skinalyze_official</span>
+      <div className="details-section">
+        <DetailItem 
+          label="Nama" 
+          value={profile.nama} 
+          isEdit={isEdit} 
+          onChange={(e) => setProfile({ ...profile, nama: e.target.value })} 
+        />
+        
+        <DetailItem label="E-mail" value={profile.email} isEdit={false} />
+
+        <DetailItem 
+          label="Alamat" 
+          value={profile.alamat} 
+          isEdit={isEdit} 
+          onChange={(e) => setProfile({ ...profile, alamat: e.target.value })} 
+        />
+
+        <DetailItem 
+          label="Tempat, Tanggal Lahir" 
+          value={profile.ttl} 
+          isEdit={isEdit} 
+          onChange={(e) => setProfile({ ...profile, ttl: e.target.value })} 
+        />
+      </div>
+
+      {!isEdit ? (
+        <div className="edit-button-container">
+          <button className="edit-button" onClick={() => setIsEdit(true)}>Edit Profile</button>
         </div>
-      </footer>
+      ) : (
+        <div className="simpan-button-container" style={{display: 'flex', gap: '10px', justifyContent: 'center'}}>
+          <button className="simpan-button" onClick={handleSimpan}>Simpan</button>
+          <button className="edit-button" style={{backgroundColor: '#ccc'}} onClick={() => setIsEdit(false)}>Batal</button>
         </div>
-    );
+      )}
+    </div>
+  );
 };
-
 
 export default Profil;
