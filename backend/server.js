@@ -7,6 +7,7 @@ import multer from "multer";
 import mysql from "mysql2";
 import adminProductRoutes from "./src/routes/adminProductRoutes.js";
 import adminStatsRoutes from "./src/routes/adminStatsRoutes.js";
+import authRoutes from "./src/routes/authRoutes.js";
 
 /* ================= INIT ================= */
 dotenv.config();
@@ -143,6 +144,7 @@ app.post("/api/analyze-skin", upload.single("image"), async (req, res) => {
     res.status(500).json({ message: errorMessage });
   }
 });
+app.use("/api/auth", authRoutes);
 
 /* ================= START ================= */
 app.listen(PORT, () => {

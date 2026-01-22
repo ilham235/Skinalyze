@@ -1,83 +1,74 @@
 import db from "../config/mysql.js";
 
 /* ================= REGISTER ================= */
-
 export const register = async (req, res) => {
-
-  // 🔴 WAJIB TAMBAHKAN LOG INI (BARIS PERTAMA)
-  console.log("REQ BODY REGISTER:", req.body);
-
   const { uid, nama, email } = req.body;
 
-  // 🔴 VALIDASI
-  if (!uid || !nama || !email) {
-    return res.status(400).json({
-      error: "Data tidak lengkap",
-      received: req.body, // ⬅️ bantu debug
-    });
+  if (!uid || !email) {
+    return res.status(400).json({ message: "Data tidak lengkap" });
   }
 
   try {
-    await db.query(
-      "INSERT INTO users (user_id, nama, email) VALUES (?, ?, ?)",
-      [uid, nama, email]
+    const [existing] = await db.query(
+      "SELECT id FROM users WHERE firebase_uid = ?",
+      [uid]
     );
 
-    // ✅ RESPONSE KE FRONTEND
-    return res.status(201).json({
-      user_id: uid,
-      nama,
-      email,
-    });
+    if (existing.length > 0) {
+      return res.status(400).json({ message: "User sudah terdaftar" });
+    }
+
+    await db.query(
+      "INSERT INTO users (firebase_uid, nama, email, role) VALUES (?, ?, ?, ?)",
+      [uid, nama || email, email, "user"]
+    );
+
+    res.status(201).json({ message: "Register sukses" });
 
   } catch (err) {
     console.error("REGISTER ERROR:", err);
-
-    if (err.code === "ER_DUP_ENTRY") {
-      return res.status(400).json({
-        error: "Email sudah terdaftar",
-      });
-    }
-
-    return res.status(500).json({
-      error: "Gagal register user",
-    });
+    res.status(500).json({ message: "Register gagal" });
   }
 };
 
 /* ================= LOGIN ================= */
-
 export const login = async (req, res) => {
-
-  // 🔴 WAJIB TAMBAHKAN LOG INI
-  console.log("REQ BODY LOGIN:", req.body);
-
-  const { uid } = req.body;
+  const { uid, email } = req.body;
 
   if (!uid) {
-    return res.status(400).json({
-      error: "UID tidak ada",
-    });
+    return res.status(400).json({ message: "UID tidak ada" });
   }
 
   try {
     const [rows] = await db.query(
-      "SELECT * FROM users WHERE user_id = ?",
+      "SELECT * FROM users WHERE firebase_uid = ?",
       [uid]
     );
 
+    let user;
+
     if (rows.length === 0) {
-      return res.status(404).json({
-        error: "User tidak ditemukan",
-      });
+      // USER BARU → DEFAULT USER
+      const [result] = await db.query(
+        "INSERT INTO users (firebase_uid, email, role) VALUES (?, ?, ?)",
+        [uid, email, "user"]
+      );
+
+      user = {
+        id: result.insertId,
+        firebase_uid: uid,
+        email,
+        role: "user",
+      };
+    } else {
+      user = rows[0];
     }
 
-    return res.json(rows[0]);
+    console.log("LOGIN USER:", user);
+    res.json(user);
 
   } catch (err) {
     console.error("LOGIN ERROR:", err);
-    return res.status(500).json({
-      error: "Login gagal",
-    });
+    res.status(500).json({ message: "Login gagal" });
   }
 };
