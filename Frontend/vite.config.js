@@ -6,7 +6,7 @@
 //   plugins: [react()],
 // })
 import react from '@vitejs/plugin-react'; // atau plugin vue jika pakai vue
-import { defineConfig } from 'vite'
+import { defineConfig } from 'vite';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -20,25 +20,30 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {
+        manualChunks: (id) => {
           // Pisahkan vendor libraries
-          'vendor-react': ['react', 'react-dom', 'react-router-dom'],
-          'vendor-ui': ['recharts', 'react-markdown'],
-          'vendor-firebase': ['firebase'],
-          // Pisahkan pages menjadi chunk terpisah
-          'pages-admin': [
-            './src/Pages/admin/AdminDashboard.jsx',
-            './src/Pages/admin/AdminProducts.jsx',
-            './src/Pages/admin/AdminStats.jsx',
-          ],
-          'pages-user': [
-            './src/Pages/Analisis.jsx',
-            './src/Pages/HasilAnalisis.jsx',
-            './src/Pages/Rekomendasi.jsx',
-          ],
+          if (id.includes('node_modules/react')) {
+            return 'vendor-react';
+          }
+          if (id.includes('node_modules/firebase')) {
+            return 'vendor-firebase';
+          }
+          if (id.includes('node_modules/recharts') || id.includes('node_modules/react-markdown')) {
+            return 'vendor-ui';
+          }
+          // Pisahkan admin pages
+          if (id.includes('Pages/admin')) {
+            return 'pages-admin';
+          }
+          // Pisahkan pages utama
+          if (id.includes('Pages/Analisis') || id.includes('Pages/HasilAnalisis') || id.includes('Pages/Rekomendasi')) {
+            return 'pages-user';
+          }
         },
+        chunkFileNames: 'assets/[name]-[hash].js',
+        entryFileNames: 'assets/[name]-[hash].js',
       },
     },
-    chunkSizeWarningLimit: 1000,
+    chunkSizeWarningLimit: 600,
   },
 })

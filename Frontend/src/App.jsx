@@ -1,5 +1,5 @@
-import { lazy } from "react";
-import { Route, BrowserRouter as Router, Routes, Suspense } from "react-router-dom";
+import { lazy, Suspense } from "react";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
 /* USER - Lazy loaded */
 const Analisis = lazy(() => import("./Pages/Analisis"));
