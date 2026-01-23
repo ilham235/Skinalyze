@@ -1,21 +1,21 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
 /* USER */
-import HalamanLogin from "./Pages/HalamanLogin";
-import Login from "./Pages/Login";
-import SignUp from "./Pages/SignUp";
-import Home from "./Pages/Home";
-import Profil from "./Pages/Profil";
-import Riwayat from "./Pages/Riwayat";
 import Analisis from "./Pages/Analisis";
-import HasilAnalisis from "./Pages/HasilAnalisis";
-import Edukasi from "./Pages/Edukasi";
-import Rekomendasi from "./Pages/Rekomendasi";
 import DetailProduk from "./Pages/DetailProduk";
+import Edukasi from "./Pages/Edukasi";
+import HalamanLogin from "./Pages/HalamanLogin";
+import HasilAnalisis from "./Pages/HasilAnalisis";
+import Home from "./Pages/Home";
+import Login from "./Pages/login";
+import Profil from "./Pages/Profil";
+import Rekomendasi from "./Pages/Rekomendasi";
+import Riwayat from "./Pages/Riwayat";
+import SignUp from "./Pages/SignUp";
 
 /* ADMIN */
-import AdminLayout from "./Pages/admin/AdminLayout";
 import AdminDashboard from "./Pages/admin/AdminDashboard";
+import AdminLayout from "./Pages/admin/AdminLayout";
 import AdminProducts from "./Pages/admin/AdminProducts";
 import AdminStats from "./Pages/admin/AdminStats";
 
