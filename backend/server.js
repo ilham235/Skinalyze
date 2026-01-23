@@ -1,5 +1,5 @@
 import cors from "cors";
-import dotenv from "dotenv";
+// import dotenv from "dotenv";
 import express from "express";
 import fs from "fs";
 import mysql from "mysql2";
@@ -10,14 +10,14 @@ import analyzeRoute from "./src/routes/analyzeRoute.js";
 import authRoutes from "./src/routes/authRoutes.js";
 
 /* ================= INIT ================= */
-dotenv.config({ path: "./.env" });
+//dotenv.config({ path: "./.env" });
 const app = express();
 const PORT = 5000;
 
 /* ================= MIDDLEWARE ================= */
 app.use(cors());
 app.use(express.json({ limit: "10mb" }));
-require('dotenv').config({ path: './.env' });
+//require('dotenv').config({ path: './.env' });
 app.use((req, res, next) => {
   console.log(`📡 [${new Date().toLocaleTimeString()}] ${req.method} ${req.url}`);
   next();
