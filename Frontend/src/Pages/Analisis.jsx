@@ -3,11 +3,17 @@ import { createPortal } from "react-dom";
 import "./Analisis.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios"; 
+import { getAuth } from "firebase/auth";
 
 function Analisis() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  
-  // State Input Data
+
+  const [user, setUser] = useState(null);
+  const [authReady, setAuthReady] = useState(false);
+
+  const [cooldown, setCooldown] = useState(false);
+
+
   const [scanOpen, setScanOpen] = useState(false);
   const [preview, setPreview] = useState(null); 
   const [showPreview, setShowPreview] = useState(false); 
@@ -18,7 +24,6 @@ function Analisis() {
   const fileInputRef = useRef(null);
   const navigate = useNavigate();
 
-  // State Form
   const [jenisKulit, setJenisKulit] = useState("");
   const [masalahKulit, setMasalahKulit] = useState("");
   const [budget, setBudget] = useState("");
@@ -58,14 +63,13 @@ function Analisis() {
             };
           }
         } catch (err) {
-          console.error("Gagal akses kamera:", err);
           alert("Gagal mengakses kamera.");
           setScanOpen(false); 
         }
       }
     };
     if (scanOpen) startCamera();
-    return () => { if (stream) stream.getTracks().forEach((track) => track.stop()); };
+    return () => { if (stream) stream.getTracks().forEach(track => track.stop()); };
   }, [scanOpen]); 
 
   const handleStartScan = () => setScanOpen(true);
@@ -74,48 +78,77 @@ function Analisis() {
     if (!videoRef.current) return;
     const width = videoRef.current.videoWidth;
     const height = videoRef.current.videoHeight;
-    if (width === 0 || height === 0) return;
+    if (!width || !height) return;
 
     const canvas = document.createElement("canvas");
     canvas.width = width;
     canvas.height = height;
     const ctx = canvas.getContext("2d");
-    ctx.translate(width, 0); ctx.scale(-1, 1); 
+    ctx.translate(width, 0);
+    ctx.scale(-1, 1);
     ctx.drawImage(videoRef.current, 0, 0, width, height);
-    
-    const blob = await new Promise((resolve) => canvas.toBlob(resolve, "image/jpeg"));
+
+    const blob = await new Promise(resolve => canvas.toBlob(resolve, "image/jpeg"));
     const url = URL.createObjectURL(blob);
-    setPreview(url); setScanOpen(false); setShowPreview(true);
+
+    setPreview(url);
+    setScanOpen(false);
+    setShowPreview(true);
   };
 
-  const handleFolderClick = () => { preview ? setShowPreview(true) : fileInputRef.current.click(); };
+  const handleFolderClick = () => {
+    preview ? setShowPreview(true) : fileInputRef.current.click();
+  };
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
-    if (file) {
-        const url = URL.createObjectURL(file);
-        setPreview(url); e.target.value = null; setShowPreview(true);
-    }
+    if (!file) return;
+    setPreview(URL.createObjectURL(file));
+    e.target.value = null;
+    setShowPreview(true);
   };
 
-  const deletePhoto = () => { setPreview(null); setShowPreview(false); };
+  const deletePhoto = () => {
+    setPreview(null);
+    setShowPreview(false);
+  };
+  
+  useEffect(() => {
+  const auth = getAuth();
 
-  // /* ===== LOGIKA ANALISIS AI + SEND UID ===== */
-  const handleAnalyze = async () => {
+  const unsubscribe = auth.onAuthStateChanged((currentUser) => {
+    setUser(currentUser);
+    setAuthReady(true);
+  });
+
+  return () => unsubscribe();
+  }, []);
+
+  /* ================= ANALYZE (LOGIKA SAJA) ================= */
+const handleAnalyze = async () => {
+  if (!authReady) return;
+
   if (!preview) {
     alert("Mohon unggah foto wajah terlebih dahulu!");
     return;
   }
 
-  if (!jenisKulit || !masalahKulit || !budget) {
-    alert("Mohon lengkapi semua data form.");
+  if (cooldown) {
+    alert("Silakan tunggu beberapa menit sebelum analisis ulang.");
+    return;
+  }
+
+  setCooldown(true);
+  setTimeout(() => setCooldown(false), 5 * 60 * 1000);
+
+  if (!user) {
+    alert("User belum login");
     return;
   }
 
   setIsLoading(true);
 
   try {
-    // Konversi preview URL ke File
     const response = await fetch(preview);
     const blob = await response.blob();
     const file = new File([blob], "wajah.jpg", { type: "image/jpeg" });
@@ -125,36 +158,33 @@ function Analisis() {
     formData.append("jenisKulit", jenisKulit);
     formData.append("masalahKulit", masalahKulit);
     formData.append("budget", budget);
+    formData.append("user_uid", user.uid);
 
     const res = await axios.post(
       "http://localhost:5000/api/analyze-skin",
       formData,
-      {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      }
+      { headers: { "Content-Type": "multipart/form-data" } }
     );
 
     navigate("/HasilAnalisis", {
       state: {
-        image: preview,
+        image: preview, // 🔥 INI PENTING
         jenisKulit,
         masalahKulit,
-        aiResult: {
-          analisis_visual: res.data.ai_result,
-          rekomendasi_produk: res.data.produk,
-        },
+        aiResult: res.data,
       },
     });
 
   } catch (error) {
-    console.error("Analisis gagal:", error);
-    alert("Gagal menganalisis wajah. Cek koneksi server.");
+    console.error("ANALISIS ERROR:", error);
+    alert("Analisis gagal");
   } finally {
     setIsLoading(false);
   }
 };
+
+
+
 //analisis
   return (
     <div className="analisis-container">
@@ -232,7 +262,7 @@ function Analisis() {
           <button 
             className="analyze-button" 
             onClick={handleAnalyze} 
-            disabled={isLoading} 
+            disabled={isLoading } 
             style={{
               opacity: isLoading ? 0.7 : 1,
               cursor: isLoading ? 'wait' : 'pointer',
