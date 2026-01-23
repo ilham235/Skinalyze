@@ -1,52 +1,62 @@
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { lazy } from "react";
+import { Route, BrowserRouter as Router, Routes, Suspense } from "react-router-dom";
 
-/* USER */
-import Analisis from "./Pages/Analisis";
-import DetailProduk from "./Pages/DetailProduk";
-import Edukasi from "./Pages/Edukasi";
-import HalamanLogin from "./Pages/HalamanLogin";
-import HasilAnalisis from "./Pages/HasilAnalisis";
-import Home from "./Pages/Home";
-import Login from "./Pages/login";
-import Profil from "./Pages/Profil";
-import Rekomendasi from "./Pages/Rekomendasi";
-import Riwayat from "./Pages/Riwayat";
-import SignUp from "./Pages/SignUp";
+/* USER - Lazy loaded */
+const Analisis = lazy(() => import("./Pages/Analisis"));
+const DetailProduk = lazy(() => import("./Pages/DetailProduk"));
+const Edukasi = lazy(() => import("./Pages/Edukasi"));
+const HalamanLogin = lazy(() => import("./Pages/HalamanLogin"));
+const HasilAnalisis = lazy(() => import("./Pages/HasilAnalisis"));
+const Home = lazy(() => import("./Pages/Home"));
+const Login = lazy(() => import("./Pages/login"));
+const Profil = lazy(() => import("./Pages/Profil"));
+const Rekomendasi = lazy(() => import("./Pages/Rekomendasi"));
+const Riwayat = lazy(() => import("./Pages/Riwayat"));
+const SignUp = lazy(() => import("./Pages/SignUp"));
 
-/* ADMIN */
-import AdminDashboard from "./Pages/admin/AdminDashboard";
-import AdminLayout from "./Pages/admin/AdminLayout";
-import AdminProducts from "./Pages/admin/AdminProducts";
-import AdminStats from "./Pages/admin/AdminStats";
+/* ADMIN - Lazy loaded */
+const AdminDashboard = lazy(() => import("./Pages/admin/AdminDashboard"));
+const AdminLayout = lazy(() => import("./Pages/admin/AdminLayout"));
+const AdminProducts = lazy(() => import("./Pages/admin/AdminProducts"));
+const AdminStats = lazy(() => import("./Pages/admin/AdminStats"));
+
+// Loading component
+const LoadingSpinner = () => (
+  <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+    <p>Loading...</p>
+  </div>
+);
 
 function App() {
   return (
     <Router>
-      <Routes>
+      <Suspense fallback={<LoadingSpinner />}>
+        <Routes>
 
-        {/* USER */}
-        <Route path="/" element={<HalamanLogin />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/profil" element={<Profil />} />
-        <Route path="/riwayat" element={<Riwayat />} />
-        <Route path="/analisis" element={<Analisis />} />
-        <Route path="/hasilanalisis" element={<HasilAnalisis />} />
-        <Route path="/edukasi" element={<Edukasi />} />
-        <Route path="/rekomendasi" element={<Rekomendasi />} />
-        <Route path="/detailproduk" element={<DetailProduk />} />
+          {/* USER */}
+          <Route path="/" element={<HalamanLogin />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/profil" element={<Profil />} />
+          <Route path="/riwayat" element={<Riwayat />} />
+          <Route path="/analisis" element={<Analisis />} />
+          <Route path="/hasilanalisis" element={<HasilAnalisis />} />
+          <Route path="/edukasi" element={<Edukasi />} />
+          <Route path="/rekomendasi" element={<Rekomendasi />} />
+          <Route path="/detailproduk" element={<DetailProduk />} />
 
-        {/* ADMIN */}
-        <Route path="/admin" element={<AdminLayout />}>
-          {/* default redirect */}
-          <Route index element={<AdminDashboard />} />
-          <Route path="dashboard" element={<AdminDashboard />} />
-          <Route path="produk" element={<AdminProducts />} />
-          <Route path="stats" element={<AdminStats />} />
-        </Route>
+          {/* ADMIN */}
+          <Route path="/admin" element={<AdminLayout />}>
+            {/* default redirect */}
+            <Route index element={<AdminDashboard />} />
+            <Route path="dashboard" element={<AdminDashboard />} />
+            <Route path="produk" element={<AdminProducts />} />
+            <Route path="stats" element={<AdminStats />} />
+          </Route>
 
-      </Routes>
+        </Routes>
+      </Suspense>
     </Router>
   );
 }
