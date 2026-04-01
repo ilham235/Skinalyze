@@ -1,0 +1,72 @@
+.detailproduk-container {
+  background: linear-gradient(to bottom right, #e6f0ff, #ffffff);
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Box Detail Produk */
+.detailproduk-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  background-color: #fff;
+  margin: 10px auto 60px auto;
+  padding: 40px;
+  width: 1400px;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.detailproduk-image {
+  width: 300px;
+  border-radius: 15px;
+}
+
+.detailproduk-info {
+  flex: 1;
+}
+
+.detailproduk-info h2 {
+  color: #4169e1;
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.detailproduk-info p {
+  color: #444;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.button-group {
+  display: flex;
+  gap: 15px;
+}
+
+.detailproduk-back-btn,
+.detailproduk-buy-btn {
+  padding: 12px 30px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.detailproduk-back-btn {
+  background-color: #77aadd;
+  color: white;
+}
+
+.detailproduk-buy-btn {
+  background-color: #ff69b4;
+  color: white;
+}
+
+/* Footer mengikuti gaya halaman lain */
+.skinsanalyze-footer {
+  text-align: center;
+  padding: 20px 0;
+}

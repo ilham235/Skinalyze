@@ -1,0 +1,384 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap'); /* Contoh import Poppins */
+
+:root {
+    --color-light-blue: #E6F0FF; /* Warna latar belakang utama */
+    --color-medium-blue: #77AADD; /* Warna tombol */
+    --color-soft-pink: #FFC0CB; /* Warna lingkaran di kiri atas */
+    --color-fuchsia: #FF69B4; /* Warna utama logo 'Skin' */
+    --color-text-brown: #A0522D; /* Warna teks "Uncover..." */
+    --color-footer-blue: #ADD8E6; /* Warna latar belakang footer */
+    --color-light-gray-text: #708090; /* Warna tagline */
+    --color-white: #FFFFFF;
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif; /* Gunakan Poppins atau font pilihanmu */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.skinanalyze-container {
+    height: 100vh;
+    background-color: var(--color-light-blue);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden; /* INI PENYEBAB MOBILE GA BISA SCROLL */
+    padding-bottom: 0px; /* Ruang untuk footer */
+}
+
+/* Lingkaran Pink Sudut Kiri Atas */
+.background-circle-top-left {
+    position: absolute;
+    top: -50px; /* Sesuaikan untuk pas di sudut */
+    left: -50px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: var(--color-soft-pink);
+    opacity: 0.6; 
+    z-index: 0;
+}
+
+/* Header */
+.skinanalyze-header {
+    text-align: center;
+    padding-top: 50px;
+    z-index: 2;
+}
+
+.skinanalyze-logo {
+    font-size: 128px;
+    font-weight: 2000 ;
+    font-family: 'Abril Fatface', sans-serif;
+    color: var(--color-soft-pink);
+    text-shadow: 
+        -3px -3px 0 var(--color-fuchsia),
+        3px -3px 0 var(--color-fuchsia),
+        -3px 3px 0 var(--color-fuchsia),
+        3px 3px 0 var(--color-fuchsia),
+        6px 6px 0 var(--color-fuchsia);
+    letter-spacing: 7px;
+    transform: translateX(-800px);
+    position: relative;
+}
+
+.skinanalyze-tagline {
+    font-size: 50px;
+    color: var(--color-light-gray-text);
+    font-family: 'Great Vibes', cursive;
+    margin-top: -80px;
+    margin-left: -1600px;
+}
+
+/* Konten Utama */
+.skinanalyze-main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    max-width: 1400px;
+    margin-top: 50px;
+    flex-wrap: wrap; 
+    z-index: 1;
+}
+
+/* Bagian Kiri */
+.left-section {
+    flex-basis: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-width: 300px;
+    padding: 20px;
+}
+
+.profile-circle {
+    width: 400px;
+    border-radius: 50%;
+    background-color: var(--color-white);
+    margin-left: -975px;
+    margin-top: -300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.profile-icon {
+    width: 110%;
+    height: auto;
+}
+
+.text-block {
+    margin-top: 40px;
+    font-size: 24px;
+    margin-left: -960px;
+    line-height: 1.5;
+    color: var(--color-text-brown);
+    font-weight: 600;
+}
+
+.scan-shelf-text {
+    font-weight: 900;
+    color: var(--color-text-brown);
+}
+
+/* Bagian Kanan */
+.right-section-illustration {
+    flex-basis: 50%;
+    position: relative;
+    min-width: 500px;
+    max-width: 600px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 30px;
+}
+
+.skincare-illustration-woman {
+    width: 100%;
+    margin-top: -80px;
+    height: auto;
+    display: block;
+    z-index: 2;
+    position: relative;
+    transform: translateY(-111px) translateX(60%) scale(1.5);
+    transform-origin: center;
+}
+
+/* Ikon Produk */
+.product-icon {
+    position: absolute;
+    width: 80px;
+    height: auto;
+    z-index: 3;
+}
+
+.spf60 {
+    width: 180px;
+    top: 30%;
+    left: 130%;
+    transform: rotate(-10deg);
+}
+
+.toner {
+    width: 180px;
+    top: 5%;
+    right: 15%;
+    transform: rotate(15deg);
+}
+
+.moisturizer {
+    width: 180px;
+    bottom: 100%;
+    right: -60%;
+    transform: rotate(-5deg);
+}
+
+/* Gelembung */
+.bubble {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.6);
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.9), 0 0 5px rgba(0, 0, 0, 0.08);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.bubble-1 { width: 80px; height: 80px; top: 10%; left: 45%; opacity: 0.8; }
+.bubble-2 { width: 60px; height: 60px; top: 25%; right: 28%; opacity: 0.7; }
+.bubble-3 { width: 40px; height: 40px; top: 55%; left: 20%; opacity: 0.6; }
+.bubble-4 { width: 50px; height: 50px; top: 70%; right: 10%; opacity: 0.9; }
+.bubble-5 { width: 70px; height: 70px; top: 5%; right: 55%; opacity: 0.8; }
+.bubble-6 { width: 30px; height: 30px; bottom: 50%; left: 5%; opacity: 0.5; }
+.bubble-7 { width: 45px; height: 45px; top: 85%; left: 40%; opacity: 0.7; }
+
+/* Tombol */
+.button-container {
+    position: relative;
+    top: 27px;
+    left: 82%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    width: 80%;
+    max-width: 300px;
+    z-index: 4;
+}
+
+.main-button {
+    padding: 15px 0;
+    border-radius: 8px;
+    border: none;
+    font-size: 19px;
+    font-weight: 700;
+    cursor: pointer;
+    color: var(--color-white);
+    background-color: var(--color-medium-blue);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: background-color 0.3s ease;
+    width: 100250px;
+    max-width: 190%;
+}
+
+.main-button:hover {
+    background-color: #5d97d0;
+}
+
+/* Footer */
+.skinanalyze-footer {
+    position: absolute;
+    width: 100%;
+    height: 40px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--color-footer-blue);
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 14px;
+    z-index: 10;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.contact-icon {
+    width: 35px;
+    height: 35px;
+}
+
+.contact-link,
+.contact-item span {
+    font-size: 20px;
+    font-weight: 600;
+    color: #2e2e2e;
+}
+
+/* ==================== MEDIA QUERY ==================== */
+
+@media (max-width: 1024px) {
+    .skinanalyze-logo { font-size: 70px; }
+    .skinanalyze-tagline { font-size: 18px; }
+    .text-block { font-size: 17px; }
+    .profile-circle { width: 180px; height: 180px; }
+}
+
+@media (max-width: 768px) {
+    .skinanalyze-main-content { flex-direction: column; margin-top: 30px; }
+    .left-section, .right-section-illustration {
+        flex-basis: 100%;
+        max-width: 90%;
+        min-width: unset;
+        margin-top: 30px;
+    }
+    .skinanalyze-logo { font-size: 50px; letter-spacing: 3px; }
+    .skinanalyze-tagline { font-size: 16px; margin-top: -15px; }
+    .profile-circle { width: 150px; height: 150px; }
+    .text-block { font-size: 16px; margin-top: 30px; }
+    .button-container { width: 80%; max-width: 280px; margin-top: 25px; }
+    .main-button { padding: 12px 0; font-size: 17px; }
+    .skincare-illustration-woman { max-width: 400px; }
+    .bubble { display: none; }
+
+    .skinanalyze-footer {
+        position: relative;
+        flex-direction: column;
+        padding: 15px 0;
+        height: auto;
+        margin-top: 40px;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+    .skinanalyze-logo { font-size: 55px; transform: none; margin-left: 0; }
+    .skinanalyze-tagline { margin-left: 0; font-size: 20px; }
+
+    .profile-circle {
+        width: 230px;
+        height: 230px;
+        margin-left: 0;
+        margin-top: 20px;
+    }
+
+    .text-block {
+        margin-left: 0;
+        font-size: 17px;
+        margin-top: 15px;
+    }
+
+    .right-section-illustration {
+        min-width: unset;
+        max-width: 100%;
+        margin-top: 10px;
+    }
+
+    .skincare-illustration-woman {
+        transform: none;
+        scale: 1;
+        margin: 0 auto;
+        width: 80%;
+    }
+
+    .product-icon { display: none; }
+    .bubble { display: none; }
+
+    .button-container {
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: none;
+        width: 80%;
+        max-width: 250px;
+        margin: 20px auto;
+    }
+
+    .main-button {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .skinanalyze-footer {
+        position: relative !important;
+        flex-direction: column;
+        gap: 6px;
+        padding: 15px 0;
+        height: auto;
+        margin-top: 30px;
+    }
+}
+
+/*  
+===============================================
+======  FIX AGAR MOBILE BISA SCROLL  ==========
+===============================================
+*/
+
+@media (max-width: 480px) {
+
+    html, body {
+        height: auto !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+    }
+
+    .skinanalyze-container {
+        height: auto !important;      /* LEPAS KUNCI 100vh */
+        min-height: 100vh !important; /* TETAP PANJANG */
+        overflow: visible !important; /* SCROLL AKTIF */
+    }
+}
+

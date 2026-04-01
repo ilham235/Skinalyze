@@ -1,0 +1,100 @@
+/* ================= CONTAINER ================= */
+.hasil-container {
+  background: linear-gradient(to bottom right, #e6f0ff, #e6f0ff);
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+}
+
+/* ================= NAVBAR ================= */
+.hasil-navbar {
+  padding: 15px 40px;
+  background-color: #e6f0ff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.hasil-nav-left {
+  display: flex;
+  align-items: center;
+}
+
+.hasil-menu-toggle {
+  font-size: 30px;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+/* ================= BRAND ================= */
+.rekomendasi-logo-girl {
+  height: 170px;
+  margin: 80px 30px 0 200px;
+}
+
+.rekomendasi-brand-name {
+  font-size: 128px;
+  font-family: "Abril Fatface", sans-serif;
+  color: var(--color-soft-pink);
+  text-shadow: 6px 6px 0 var(--color-fuchsia);
+}
+
+.rekomendasi-brand-tagline {
+  font-size: 50px;
+  font-family: "Great Vibes", cursive;
+  margin-top: 200px;
+  margin-left: -500px;
+}
+
+/* ================= MAIN ================= */
+.rekomendasi-main {
+  text-align: center;
+  padding: 350px;
+  margin-top: -350px;
+}
+
+.rekomendasi-title {
+  margin-bottom: 20px;
+}
+
+/* ================= PRODUK (DIPERTAHANKAN) ================= */
+.rekomendasi-box {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  background-color: #c7dbff;
+  padding: 50px;
+  width: 2000px;
+  border-radius: 20px;
+}
+
+.rekomendasi-category {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 15px;
+  width: 300px;
+}
+
+.rekomendasi-category img {
+  width: 100%;
+}
+
+.rekomendasi-category h3 {
+  color: #4169e1;
+}
+
+.rekomendasi-category p {
+  font-size: 13px;
+}
+
+.rekomendasi-footer {
+  margin-top: 20px;
+}
+
+.rekomendasi-more-btn {
+  background-color: #77aadd;
+  color: white;
+  padding: 20px 50px;
+  border-radius: 10px;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+}

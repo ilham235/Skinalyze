@@ -1,0 +1,15 @@
+# Root
+node_modules/
+dist/
+package-lock.json
+
+# Frontend
+Frontend/node_modules/
+Frontend/dist/
+
+# Backend
+backend/node_modules/
+backend/.env
+backend/firebase-service-account.json
+backend/database/
+backend/uploads

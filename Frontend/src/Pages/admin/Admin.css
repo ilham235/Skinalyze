@@ -1,0 +1,90 @@
+/* ================= LAYOUT ================= */
+.admin-layout {
+  display: flex;
+  height: 100vh;
+  background: #f4f7ff;
+}
+
+.admin-sidebar {
+  width: 240px;
+  background: #1f2937;
+  color: white;
+  padding: 20px;
+  flex-shrink: 0;
+}
+
+.admin-sidebar h2 {
+  margin-bottom: 20px;
+}
+
+.admin-sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.admin-sidebar li {
+  padding: 12px 0;
+  cursor: pointer;
+}
+
+.admin-sidebar li:hover {
+  color: #93c5fd;
+}
+
+.admin-content {
+  flex: 1;
+  overflow-y: auto;
+  background: #f9fafb;
+}
+
+/* ================= PAGE ================= */
+.admin-page {
+  padding: 32px;
+}
+
+.admin-page h1 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+/* ================= SUMMARY ================= */
+.admin-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.summary-card {
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+.summary-card h3 {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 6px;
+}
+
+.summary-card p {
+  font-size: 28px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.summary-card.warning {
+  border-left: 6px solid #f59e0b;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .admin-sidebar {
+    display: none;
+  }
+
+  .admin-page {
+    padding: 20px;
+  }
+}

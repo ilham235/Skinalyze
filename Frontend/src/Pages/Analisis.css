@@ -1,0 +1,688 @@
+/* ANALISIS CONTAINER */
+.analisis-container {
+  min-height: 100vh;
+  background: #dce7ff;
+  font-family: 'Arial', sans-serif;
+}
+
+/* HEADER */
+.analisis-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: #dce7ff;
+  backdrop-filter: blur(10px);
+}
+
+.back-button {
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: #ff6b9d;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.back-button:hover {
+  color: #ff4d7d;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-icon {
+  width: 48px;
+  height: 48px;
+  background: #ffcceb;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
+}
+
+.brand-title {
+    font-size: 128px;
+    font-weight: 2000 ;
+    font-family: 'Abril Fatface', sans-serif;
+    color: var(--color-soft-pink);
+    text-shadow: 
+        -3px -3px 0 var(--color-fuchsia),  /* Outline putih lebih tebal */
+        3px -3px 0 var(--color-fuchsia),
+        -3px 3px 0 var(--color-fuchsia),
+        3px 3px 0 var(--color-fuchsia),
+        6px 6px 0 var(--color-fuchsia); /* Bayangan pink yang solid */
+    letter-spacing: 5px;
+    transform: translateX(0px); 
+    position: relative;
+}
+
+.brand-subtitle {
+  font-size: 14px;
+  color: #ffb3d9;
+  font-style: italic;
+  margin: 0;
+}
+
+.header-spacer {
+  width: 40px;
+}
+
+/* MAIN CONTENT */
+.analisis-main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px 20px;
+  margin-top: -90px;
+}
+
+/* UPLOAD SECTION */
+.upload-section {
+  margin-bottom: 30px;
+}
+
+.section-title {
+  font-size: 40px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.upload-box {
+  width: 600;
+  height: 150px;  
+  background: #ffcceb;
+  border-radius: 15px;
+  padding: 60px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.upload-icon,
+.maximize-icon {
+  background: none;
+  border: none;
+  font-size: 50px;
+  color: #666;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.upload-icon:hover,
+.maximize-icon:hover {
+  transform: scale(1.1);
+}
+
+/* FORM GROUP */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  font-size: 35px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.form-select {
+  width: 100%;
+  padding: 15px;
+  background: #ffcceb;
+  border: none;
+  border-radius: 10px;
+  font-size: 30px;
+  color: #666;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  transition: background-color 0.3s;
+}
+
+.form-select:hover {
+  background-color: #ffb3d9;
+}
+
+.form-select:focus {
+  outline: none;
+  background-color: #ffb3d9;
+}
+
+/* BUTTON CONTAINER */
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.analyze-button {
+  background: linear-gradient(135deg, #ffc1e3, #e0c3fc);
+  color: #666;
+  border: none;
+  padding: 15px 30px;
+  font-size: 26px;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 8px 20px rgba(255, 107, 157, 0.3);
+  transition: all 0.3s;
+}
+
+.analyze-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(255, 107, 157, 0.5);
+}
+
+.arrow-icon {
+  background: #ff6b9d;
+  color: white;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+@media (max-width: 768px) {
+
+
+  /* PAGE ALLOW FULL SCROLL */
+  body,
+  .home-container {
+    overflow-y: auto !important;
+    height: auto !important;
+  }
+
+
+  /* NAVBAR */
+  .navbar {
+    width: 100%;
+    padding: 15px 20px;
+  }
+
+
+  .nav-left {
+    gap: 10px;
+  }
+
+
+  .menu-toggle {
+    font-size: 40px;
+    margin-left: 0;
+    margin-right: 10px;
+  }
+
+
+  .logo-girl {
+    height: 80px;
+    margin: 0;
+  }
+
+
+  .brand-name {
+    font-size: 48px;
+    text-shadow:
+      -2px -2px 0 var(--color-fuchsia),
+      2px -2px 0 var(--color-fuchsia),
+      -2px 2px 0 var(--color-fuchsia),
+      2px 2px 0 var(--color-fuchsia);
+  }
+
+
+  .brand-tagline {
+    margin: 0;
+    font-size: 22px;
+    transform: translateY(-10px);
+    display: flex;
+  align-items: center;
+  padding: 10px 10px;
+  }
+
+
+  .nav-right {
+    display: none;
+  }
+
+
+  /* SIDEBAR */
+  .sidebar {
+    width: 280px !important;
+    left: -300px;
+  }
+
+
+  .sidebar.open {
+    left: 0;
+  }
+
+
+  .sidebar-logo {
+    font-size: 48px;
+  }
+
+
+  .sidebar-menu li {
+    font-size: 22px;
+    padding-left: 25px;
+    margin: 30px 0;
+  }
+
+
+  .logout-btn {
+    padding: 10px 40px;
+    font-size: 20px;
+  }
+
+
+  /* HERO BOX */
+  .hero-box {
+    width: 90%;
+    padding: 25px;
+    font-size: 18px;
+  }
+
+
+  .hero-text {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+
+  .analyze-btn {
+    font-size: 22px;
+    padding: 12px 25px;
+    margin-top: 40px;
+  }
+
+
+  /* EDUCATION BUTTON */
+  .education-btn {
+    font-size: 22px;
+    margin-left: 0;
+    margin-top: 25px;
+  }
+
+
+  /* FOOTER */
+  .skinanalyze-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 40px;
+    padding-bottom: 40px;
+  }
+
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+
+  .contact-icon {
+    width: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+
+  /* Container lebih rapih */
+  .analisis-container {
+    padding-bottom: 50px;
+  }
+
+  /* HEADER */
+  .analisis-header {
+    padding: 12px;
+    flex-direction: row;
+  }
+
+  .back-button {
+    font-size: 22px;
+  }
+
+  .brand-icon {
+    width: 38px;
+    height: 38px;
+    font-size: 30px;
+  }
+
+  /* Brand title diperkecil biar ga keluar layar */
+  .brand-title {
+    font-size: 42px;
+    letter-spacing: 2px;
+    text-shadow:
+      -1px -1px 0 var(--color-fuchsia),
+      1px -1px 0 var(--color-fuchsia),
+      -1px 1px 0 var(--color-fuchsia),
+      1px 1px 0 var(--color-fuchsia),
+      3px 3px 0 var(--color-fuchsia);
+  }
+
+  .header-spacer {
+    width: 15px;
+  }
+
+  /* MAIN CONTENT */
+  .analisis-main {
+    margin-top: 20px;
+    padding: 10px;
+  }
+
+  /* UPLOAD SECTION */
+  .section-title {
+    font-size: 24px;
+  }
+
+  .upload-box {
+    width: 100%;
+    height: 120px;
+    padding: 25px 20px;
+  }
+
+  .upload-icon,
+  .maximize-icon {
+    font-size: 32px;
+  }
+
+  /* FORM LABEL */
+  .form-label {
+    font-size: 20px;
+    margin-bottom: 6px;
+  }
+
+  /* SELECT INPUT */
+  .form-select {
+    font-size: 18px;
+    padding: 12px;
+    background-position: right 10px center;
+  }
+
+  /* BUTTON */
+  .analyze-button {
+    padding: 12px 28px;
+    font-size: 20px;
+  }
+
+  .arrow-icon {
+    width: 24px;
+    height: 24px;
+    font-size: 14px;
+  }
+  .preview-img {
+  width: 140px;
+  border-radius: 12px;
+}
+
+  .scan-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+
+  .scan-box {
+    width: 80%;
+    max-width: 500px;
+    background: #000;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+  }
+
+  .scan-video {
+    width: 100%;
+    border-radius: 15px;
+  }
+
+  .scan-btn {
+    margin-top: 15px;
+    padding: 12px 40px;
+    font-size: 20px;
+    border-radius: 50px;
+    border: none;
+    background: linear-gradient(135deg, #ffc1e3, #e0c3fc);
+    cursor: pointer;
+  }
+  .preview-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.delete-btn {
+  padding: 10px 25px;
+  border-radius: 25px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+/* --- TAMBAHAN KHUSUS UI KAMERA & UPLOAD --- */
+
+/* Indikator Tombol Folder jika ada isinya */
+.upload-icon.has-file {
+  border: 2px solid #4CAF50;
+}
+
+/* Indikator Teks Sukses Upload */
+.upload-success-text {
+  font-size: 12px;
+  color: green;
+  margin-top: 5px;
+}
+
+/* Container Modal Kamera */
+.scan-box {
+  /* Pastikan style dasar scan-box yang lama tetap ada, lalu tambahkan/pastikan ini: */
+  position: relative;
+  text-align: center;
+  background-color: #000; /* Background hitam biar estetik */
+  padding: 20px;
+  border-radius: 15px;
+  max-width: 90%;
+  width: 400px;
+}
+
+/* Layar Video */
+.scan-video {
+  width: 100%;
+  border-radius: 10px;
+  display: block;
+  cursor: pointer; /* Menunjukkan bisa diklik */
+  object-fit: cover;
+}
+
+/* Teks Instruksi di Bawah Video */
+.scan-instruction {
+  color: white;
+  font-size: 12px;
+  margin: 15px 0;
+}
+
+/* Area Tombol Kontrol (Batal & Shutter) */
+.scan-controls {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 10px;
+}
+
+/* Tombol Batal (Teks) */
+.btn-cancel-scan {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.btn-cancel-scan:hover {
+  text-decoration: underline;
+}
+
+/* Tombol Shutter (Lingkaran Luar) */
+.shutter-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: white;
+  border: 3px solid #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.1s ease;
+}
+
+.shutter-btn:active {
+  transform: scale(0.9); /* Efek mengecil saat ditekan */
+}
+
+/* Tombol Shutter (Lingkaran Merah Dalam) */
+.shutter-inner {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: #ff4d4d;
+  border: 2px solid white;
+}
+
+/* Spacer Kosong penyeimbang layout */
+.scan-spacer {
+  width: 30px;
+}
+/* --- COPY KODE INI KE BAGIAN BAWAH ANALISIS.CSS --- */
+
+/* 1. Paksa Overlay ke Tengah Layar & Paling Depan */
+.scan-overlay {
+  position: fixed !important;   /* Wajib Fixed agar lepas dari layout */
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;      /* Full Lebar */
+  height: 100vh !important;     /* Full Tinggi */
+  background-color: rgba(0, 0, 0, 0.9) !important; /* Gelap */
+  
+  display: flex !important;
+  justify-content: center !important; /* Tengah Horizontal */
+  align-items: center !important;     /* Tengah Vertikal */
+  
+  z-index: 999999 !important;   /* Paling atas menutupi semuanya */
+}
+
+/* 2. Styling Kotak Kamera */
+.scan-box {
+  position: relative !important;
+  margin: auto !important;
+  width: 90% !important;
+  max-width: 400px !important;
+  background-color: #000;
+  padding: 20px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 0 50px rgba(255, 255, 255, 0.3);
+}
+
+/* 3. Styling Video agar rapi */
+.scan-video {
+  width: 100% !important;
+  height: auto !important;
+  border-radius: 10px;
+  display: block;
+  cursor: pointer;
+  border: 2px solid #333;
+}
+
+/* 4. Teks Instruksi */
+.scan-instruction {
+  color: #ccc;
+  font-size: 13px;
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+/* 5. Kontainer Tombol */
+.scan-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+}
+
+/* Tombol Shutter */
+.shutter-btn {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 4px solid #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.shutter-btn:active {
+  transform: scale(0.9);
+}
+.shutter-inner {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #ff4d4d;
+  border: 3px solid #000;
+}
+
+/* Tombol Batal */
+.btn-cancel-scan {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.scan-spacer { width: 40px; }
+
+/* --- STYLE PREVIEW HASIL --- */
+.preview-overlay {
+  position: fixed !important;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background-color: rgba(0,0,0,0.95) !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000000 !important;
+}
+.preview-wrapper {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  max-width: 90%;
+}
+.preview-large {
+  max-width: 100%;
+  max-height: 60vh;
+  border-radius: 10px;
+}
+}

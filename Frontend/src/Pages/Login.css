@@ -1,0 +1,371 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap');
+
+:root {
+  --color-bg: #E6F0FF;
+  --color-btn: #77AADD;
+  --color-accent: #FFB6C1;
+  --color-dark: #333;
+    --color-light-blue: #E6F0FF; /* Warna latar belakang utama */
+    --color-medium-blue: #77AADD; /* Warna tombol */
+    --color-soft-pink: #FFC0CB; /* Warna lingkaran di kiri atas */
+    --color-fuchsia: #FF69B4; /* Warna utama logo 'Skin' */
+    --color-text-brown: #A0522D; /* Warna teks "Uncover..." */
+    --color-footer-blue: #ADD8E6; /* Warna latar belakang footer */
+    --color-light-gray-text: #708090; /* Warna tagline */
+    --color-white: #FFFFFF;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--color-bg);
+}
+
+/* Container utama */
+.login-container {
+  position: relative;
+  height: 100vh;
+  text-align: center;
+  overflow: hidden;
+}
+
+.logo-circle {
+    width: 200px; 
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: var(--color-white);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin: 20px auto 0;
+}
+
+.logo-circle img {
+    width: 200px !important; 
+    height: 200px !important;
+    object-fit: contain;
+}
+/* Lingkaran background kiri atas */
+.circle-top-left {
+  position: absolute;
+  top: -80px;
+  left: -80px;
+  width: 200px;
+  height: 200px;
+  background-color: var(--color-accent);
+  border-radius: 50%;
+  opacity: 0.3;
+}
+
+/* Header */
+.login-header {
+  margin-top: 5px;
+}
+
+.app-title {
+  /* Diperbesar dari 180px, misalnya menjadi 250px */
+  font-size: 180px !important;
+  margin-bottom: 0;
+  line-height: 1;
+    font-family: 'Abril Fatface', sans-serif;
+    color: var(--color-soft-pink);
+    text-shadow: 
+        -3px -3px 0 var(--color-fuchsia),
+        3px -3px 0 var(--color-fuchsia),
+        -3px 3px 0 var(--color-fuchsia),
+        3px 3px 0 var(--color-fuchsia),
+        6px 6px 0 var(--color-fuchsia);
+}
+
+.app-subtitle {
+
+  font-size: 50px !important;
+  font-weight: 400;
+  color: var(--color-light-gray-text);
+  font-family: 'Great Vibes', cursive;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+.karakter {
+  position: absolute;
+  top: 50%; /* posisi tengah, bisa kamu ubah */
+  right: 15%; /* geser ke kiri-kanan */
+  transform: translateY(-50%);
+  width: 1000px; /* ubah sesuai besar gambar */
+  opacity: 0.3; 
+}
+
+.karakter img {
+  width: 100%;
+  height: auto;
+}
+
+.login-text {
+    color: var(--color-medium-blue);
+    font-weight: 700;
+    font-size: 25px;
+    margin: 10px 0 20px 0;
+}
+
+.login-box {
+  margin: 10px auto;
+  padding: 100px 50px;
+  width: 600px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 25px;
+  gap: 15px;
+}
+
+/* Input lebih kecil */
+.login-form input {
+  width: 600px;
+  padding: 12px 15px;
+  margin: 10px 0;
+  margin-right: -30px;
+  border: none;
+  border-radius: 10px;
+  background: #fff;
+  outline: none;
+  font-size: 30px;
+}
+
+.password-container {
+  position: relative;
+  width: 600px;
+}
+
+.password-container input {
+  width: 600px;
+  padding: 12px 15px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 10px;
+  background: #fff;
+  outline: none;
+  font-size: 30px;
+}
+
+.eye-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.eye-icon:hover {
+  opacity: 1;
+}
+
+.btn-continue {
+  width: 100%;
+  max-width: 600px;
+  background: var(--color-btn);
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 10px;
+  margin-top: 20px;
+  cursor: pointer;
+  font-size: 25px;
+}
+
+.btn-continue:hover {
+  background: #6699cc;
+}
+
+.google-btn {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 12px 25px;
+  margin-top: 10px;
+  cursor: pointer;
+  font-size: 25px;
+}
+
+
+.forgot-link {
+  display: block;
+  margin-top: 10px;
+  color: #5c5c5c;
+  font-size: 23px;
+  text-decoration: none;
+}
+
+    .spf60 { width: 200px; top: 25%; left: 25%; }
+    .toner { width: 200px; top: 50%; right: 70%; }
+    .moisturizer { width: 200px; bottom: 20%; right: 3%; }
+    .spf70 { width: 200px; top: 25%; left: 8%; }
+    .toner2 { width: 200px; top: 3%; right: 3%; }
+    .moisturizer3 { width: 100px; bottom: 20%; right: 3%; }
+
+.bubble-1 { width: 80px; height: 80px; top: 10%; left: 45%; opacity: 0.8; }
+.bubble-2 { width: 60px; height: 60px; top: 25%; right: 28%; opacity: 0.7; }
+.bubble-3 { width: 40px; height: 40px; top: 55%; left: 20%; opacity: 0.6; }
+.bubble-4 { width: 50px; height: 50px; top: 70%; right: 10%; opacity: 0.9; }
+.bubble-5 { width: 70px; height: 70px; top: 5%; right: 55%; opacity: 0.8; }
+.bubble-6 { width: 30px; height: 30px; bottom: 50%; left: 5%; opacity: 0.5; }
+.bubble-7 { width: 45px; height: 45px; top: 85%; left: 40%; opacity: 0.7; }
+.bubble-8 { width: 90px; height: 80px; top: 10%; left: 45%; opacity: 0.8; }
+.bubble-9 { width: 10px; height: 60px; top: 25%; right: 28%; opacity: 0.7; }
+.bubble-10 { width: 20px; height: 40px; top: 55%; left: 20%; opacity: 0.6; }
+.bubble-11 { width: 140px; height: 50px; top: 70%; right: 10%; opacity: 0.9; }
+.bubble-12 { width: 27px; height: 70px; top: 5%; right: 55%; opacity: 0.8; }
+.bubble-13 { width: 86px; height: 30px; bottom: 50%; left: 5%; opacity: 0.5; }
+.bubble-14 { width: 91px; height: 45px; top: 85%; left: 40%; opacity: 0.7; }
+
+
+/* ================================
+   📱 RESPONSIVE MOBILE FIX (≤480px)
+   ================================ */
+@media (max-width: 480px) {
+
+    /* Perbaiki scroll mobile */
+    html, body {
+        height: auto !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+    }
+
+    .login-container {
+        height: auto !important;
+        min-height: 100vh !important;
+        overflow: visible !important;
+        padding-bottom: 60px; /* agar footer tidak ketutup */
+    }
+
+    /* Header title disesuaikan */
+    .app-title {
+        font-size: 60px !important;
+        text-shadow: 
+            -1px -1px 0 var(--color-fuchsia),
+            1px -1px 0 var(--color-fuchsia),
+            -1px 1px 0 var(--color-fuchsia),
+            1px 1px 0 var(--color-fuchsia);
+    }
+
+    .app-subtitle {
+        font-size: 22px !important;
+        margin-left: 0;
+    }
+
+    /* Logo bulat mengecil */
+    .logo-circle {
+        width: 120px;
+        height: 120px;
+        margin-top: 10px;
+    }
+
+    .logo-circle img {
+        width: 120px !important;
+        height: 120px !important;
+    }
+
+    /* Form input mengecil */
+    .login-form {
+        width: 100%;
+        padding: 0 20px;
+        font-size: 16px;
+    }
+
+    .login-form input {
+        width: 100% !important;
+        font-size: 16px;
+        padding: 10px 12px;
+    }
+
+    .password-container {
+        width: 100% !important;
+    }
+
+    .password-container input {
+        width: 100% !important;
+        font-size: 16px;
+    }
+
+    .eye-icon {
+        width: 22px;
+        height: 22px;
+        right: 10px;
+    }
+
+    /* Tombol dan Google button */
+    .btn-continue,
+    .google-btn {
+        width: 100% !important;
+        max-width: 100%;
+        font-size: 18px;
+        padding: 10px 15px;
+    }
+
+    .forgot-link {
+        font-size: 14px;
+    }
+
+    /* Background karakter diubah ukuran */
+    .karakter {
+        width: 250px;
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 28%;
+        opacity: 0.15;
+    }
+
+    /* Semua product icon dibuat kecil + ditata ulang agar rapi */
+    .product-icon {
+        width: 80px !important;
+        position: absolute;
+        opacity: 0.4;
+    }
+
+    .spf60 { top: 10%; left: 5%; }
+    .spf70 { top: 10%; right: 5%; }
+    .toner { top: 45%; left: 5%; }
+    .toner2 { top: 45%; right: 5%; }
+    .moisturizer { bottom: 15%; right: 5%; width: 70px !important; }
+    .moisturizer3 { bottom: 15%; left: 5%; width: 70px !important; }
+
+    /* Semua bubble diperkecil agar tidak menutup layar */
+    .bubble {
+        transform: scale(0.3) !important;
+        opacity: 0.4 !important;
+    }
+
+    /* Footer */
+    .skinanalyze-footer {
+        flex-direction: column;
+        gap: 8px;
+        font-size: 12px;
+        padding-bottom: 20px;
+    }
+
+    .contact-icon {
+        width: 18px;
+        height: 18px;
+    }
+}

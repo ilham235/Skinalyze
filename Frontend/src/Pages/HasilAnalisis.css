@@ -1,0 +1,300 @@
+/* === SIDEBAR === */
+.hasil-sidebar {
+  position: fixed;
+  top: 0;
+  left: -730px;
+  width: 600px !important;
+  height: 100%;
+  background-color: #dce7ff;
+  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.1);
+  transition: left 0.3s ease;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+}
+
+.hasil-sidebar.open {
+  left: 0;
+}
+
+.hasil-sidebar-logo {
+  font-size: 110px;
+  font-weight: 2000;
+  margin-left: 40px;
+  font-family: "Abril Fatface", sans-serif;
+  color: var(--color-soft-pink);
+  text-shadow: 
+    -3px -3px 0 var(--color-fuchsia),
+    3px -3px 0 var(--color-fuchsia),
+    -3px 3px 0 var(--color-fuchsia),
+    3px 3px 0 var(--color-fuchsia),
+    6px 6px 0 var(--color-fuchsia);
+}
+
+.hasil-sidebar-line {
+  width: 70%;
+  border: 1px solid #ff99cc;
+  margin: 8px 0 30px 0;
+  margin-top: -60px !important;
+}
+
+.hasil-sidebar-menu {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.hasil-sidebar-menu li {
+  font-family: "Poppins", sans-serif;
+  font-size: 40px;
+  color: #4b7cdc;
+  margin: 50px 0;
+  padding-left: 100px;
+  cursor: pointer;
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.hasil-sidebar-menu li:hover {
+  transform: scale(1.1);
+  color: #ff69b4;
+}
+
+.hasil-logout-btn {
+  margin-top: auto;
+  margin-bottom: 60px !important;
+  background-color: #77aadd;
+  color: white;
+  font-size: 35px;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 220px;
+  cursor: pointer;
+  transition: 0.2s;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* === NAVBAR === */
+.hasil-navbar {
+  display: flex;
+  align-items: center;
+  padding: 15px 40px;
+  background-color: #e6f0ff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  font-family: "Poppins", sans-serif;
+}
+
+.hasil-nav-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.hasil-logo-girl {
+  height: 170px;
+  margin-bottom: auto;
+  margin-top: 80px;
+  margin-right: 30px;
+  margin-left: 200px;
+}
+
+.hasil-brand-name {
+    font-size: 128px;
+    font-weight: 2000 ;
+    font-family: 'Abril Fatface', sans-serif;
+    color: var(--color-soft-pink);
+    text-shadow: 
+        -3px -3px 0 var(--color-fuchsia),  /* Outline putih lebih tebal */
+        3px -3px 0 var(--color-fuchsia),
+        -3px 3px 0 var(--color-fuchsia),
+        3px 3px 0 var(--color-fuchsia),
+        6px 6px 0 var(--color-fuchsia); /* Bayangan pink yang solid */
+    letter-spacing: 5px;
+    transform: translateX(0px); 
+    position: relative;
+}
+
+.hasil-brand-tagline {
+font-size: 50px;
+    color: var(--color-light-gray-text);
+
+    font-family: 'Great Vibes', cursive;
+
+    margin-top: 200px;
+    margin-left: -500px;
+}
+
+.hasil-menu-toggle {
+  font-size: 60px;
+  cursor: pointer;
+  user-select: none;
+  margin-right: -100px;
+  margin-top: 10px;
+  margin-left: 70px;
+  color: #ff7fca;
+  transition: 0.2s;
+}
+
+/* === MAIN CONTENT === */
+.hasil-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -100px;
+  background: linear-gradient(to right, #e6f0ff, #e6f0ff);
+  height: 100vh;
+}
+
+.hasil-title {
+  font-size: 60px;
+  font-weight: 600;
+  color: #4b7cdc;
+  margin-bottom: 40px;
+  font-family: "Poppins", sans-serif;
+}
+
+.hasil-box {
+  width: 65%;
+  height: 600px;
+  background-color: #ffc0cb;
+  border-radius: 25px;
+  box-shadow: 0 0 20px rgba(255, 192, 203, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  color: #a0522d;
+  font-weight: 600;
+}
+
+.hasil-checkout-container {
+  margin-top: 50px;
+}
+
+.hasil-checkout-button {
+  background-color: #77aadd;
+  color: white;
+  font-size: 30px;
+  border: none;
+  border-radius: 10px;
+  padding: 20px 80px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.hasil-checkout-button:hover {
+  background-color: #4b7cdc;
+  transform: scale(1.05);
+}
+
+.hasil-arrow-icon-circle {
+  margin-left: 10px;
+}
+
+
+@media (max-width: 768px) {
+
+  /* === SIDEBAR === */
+  .hasil-sidebar {
+    width: 85% !important;
+    left: -100%;
+  }
+
+  .hasil-sidebar.open {
+    left: 0;
+  }
+
+  .hasil-sidebar-logo {
+    font-size: 50px;
+    margin-left: 20px;
+  }
+
+  .hasil-sidebar-line {
+    width: 60%;
+    margin-top: -20px !important;
+  }
+
+  .hasil-sidebar-menu li {
+    font-size: 22px;
+    margin: 25px 0;
+    padding-left: 30px;
+    gap: 15px;
+  }
+
+  .hasil-logout-btn {
+    font-size: 20px;
+    padding: 10px 80px;
+    margin-bottom: 40px !important;
+  }
+
+  /* === NAVBAR === */
+  .hasil-navbar {
+    padding: 10px 20px;
+  }
+
+  .hasil-logo-girl {
+    height: 80px;
+    margin: 0;
+    margin-right: 10px;
+    margin-left: 0;
+  }
+
+  .hasil-brand-name {
+    font-size: 45px;
+    letter-spacing: 2px;
+    text-shadow:
+      -1px -1px 0 var(--color-fuchsia),
+      1px -1px 0 var(--color-fuchsia),
+      -1px 1px 0 var(--color-fuchsia),
+      1px 1px 0 var(--color-fuchsia);
+  }
+
+  .hasil-brand-tagline {
+    font-size: 20px;
+    margin-top: 100px;
+    margin-left: 0;
+    position: absolute;
+    bottom: -205px;
+  }
+
+  .hasil-menu-toggle {
+    font-size: 32px;
+    margin: 0;
+    margin-left: auto;
+    color: #ff7fca;
+  }
+
+  /* === MAIN CONTENT === */
+  .hasil-main {
+    margin-top: 40px;
+    height: auto;
+    padding-bottom: 50px;
+  }
+
+  .hasil-title {
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+
+  .hasil-box {
+    width: 90%;
+    height: 350px;
+    font-size: 18px;
+    border-radius: 20px;
+  }
+
+  .hasil-checkout-button {
+    font-size: 22px;
+    padding: 15px 40px;
+  }
+
+  .hasil-checkout-container {
+    margin-top: 30px;
+    margin-bottom: 40px;
+  }
+  
+}
